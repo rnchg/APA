@@ -55,12 +55,12 @@
 将继续集成优化更多AI模型，以满足用户的多样化需求。
 
 ### 开源及下载地址
-- | [Github](https://github.com/rnchg/Apt/releases/latest) | [Gitee](https://gitee.com/rnchg/apt/releases/latest) | [谷歌云盘](https://drive.google.com/drive/folders/1WgallXe2G0jo0fKyFYWFnWJLuksqSqWb) | [百度云盘](https://pan.baidu.com/s/1k-IBphtLJuXQBSbp2b2Bew?pwd=1234) | [腾讯微云](https://share.weiyun.com/iyKCgmZL) |
+- | [Github](https://github.com/rnchg/Apa/releases/latest) | [Gitee](https://gitee.com/rnchg/apa/releases/latest) | [谷歌云盘](https://drive.google.com/drive/folders/1WgallXe2G0jo0fKyFYWFnWJLuksqSqWb) | [百度云盘](https://pan.baidu.com/s/1k-IBphtLJuXQBSbp2b2Bew?pwd=1234) | [腾讯微云](https://share.weiyun.com/iyKCgmZL) |
 
 ### 使用说明及技术支持
 - **Email**：[Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)
-- **Github**：[github.com/rnchg/Apt](https://github.com/rnchg/Apt)
-- **Gitee**：[gitee.com/rnchg/apt](https://gitee.com/rnchg/apt)
+- **Github**：[github.com/rnchg/Apa](https://github.com/rnchg/Apa)
+- **Gitee**：[gitee.com/rnchg/apa](https://gitee.com/rnchg/apa)
 - **Youtube**：[Light Cloud Wind](https://www.youtube.com/channel/UCHKH3bLpd8giPyr6x5sKGfw)
 - **Bilibili**：[风轻云也净](https://space.bilibili.com/478375442)
 - **QQ**：6085398
