@@ -62,7 +62,7 @@ We will continue to integrate and optimize more AI models to meet the diverse ne
 - **Github**：[github.com/rnchg/Apa](https://github.com/rnchg/Apa) 
 - **Gitee**：[gitee.com/rnchg/apa](https://gitee.com/rnchg/apa) 
 - **Youtube**: [Light Cloud Wind](https://www.youtube.com/channel/UCHKH3bLpd8giPyr6x5sKGfw) 
-- **Bilibili**: [The wind is clear and the clouds are clear](https://space.bilibili.com/478375442) 
+- **Bilibili**: [风轻云也净](https://space.bilibili.com/478375442) 
 - **QQ**：6085398 
 
 ### Running interface
