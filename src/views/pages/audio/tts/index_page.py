@@ -3,10 +3,8 @@ import os
 import customtkinter
 
 from core.consts.app_const import AppConst
-from core.consts.audio_const import AudioConst
 from core.exceptions.activation_exception import ActivationException
 from core.models.option import Option
-from core.helpers.file_helper import FileHelper
 from core.utility.language import Language
 from core.services.pages.audio.tts.index_service import IndexService
 
@@ -37,22 +35,10 @@ class IndexPage(BasePage):
         self.mode_combobox = customtkinter.CTkOptionMenu(self.header_frame, state="readonly")
         self.mode_combobox.grid(row=3, column=1, columnspan=2, padx=10, pady=10, sticky="nsew")
 
-        self.option_frame = customtkinter.CTkFrame(self.header_frame)
-        self.option_frame.grid(row=4, column=0, columnspan=3, padx=0, pady=0, sticky="nsew")
-        self.option_frame.grid_columnconfigure(1, weight=1)
-
-        self.clone_label_var = customtkinter.StringVar()
-        customtkinter.CTkLabel(self.option_frame, textvariable=self.clone_label_var).grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
-        self.clone_combobox = customtkinter.CTkOptionMenu(self.option_frame, state="readonly")
-        self.clone_combobox.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
-
-        self.clone_config_button_var = customtkinter.StringVar()
-        self.clone_config_button = customtkinter.CTkButton(self.option_frame, textvariable=self.clone_config_button_var, width=60, command=self.clone_config_button_command)
-        self.clone_config_button.grid(row=0, column=2, padx=10, pady=10, sticky="nsew")
-
-        self.clone_update_button_var = customtkinter.StringVar()
-        self.clone_update_button = customtkinter.CTkButton(self.option_frame, textvariable=self.clone_update_button_var, width=60, command=self.clone_update_button_command)
-        self.clone_update_button.grid(row=0, column=3, padx=10, pady=10, sticky="nsew")
+        self.voice_label_var = customtkinter.StringVar()
+        customtkinter.CTkLabel(self.header_frame, textvariable=self.voice_label_var).grid(row=4, column=0, padx=10, pady=10, sticky="nsew")
+        self.voice_combobox = customtkinter.CTkOptionMenu(self.header_frame, state="readonly")
+        self.voice_combobox.grid(row=4, column=1, columnspan=2, padx=10, pady=10, sticky="nsew")
 
         self.message_textbox = customtkinter.CTkTextbox(self.run_message_frame, width=360)
         self.message_textbox.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
@@ -70,9 +56,7 @@ class IndexPage(BasePage):
         self.output_button_var.set(Language.get("AudioTTSIndexPageOutputSelect"))
         self.provider_label_var.set(Language.get("AudioTTSIndexPageProvider"))
         self.mode_label_var.set(Language.get("AudioTTSIndexPageMode"))
-        self.clone_label_var.set(Language.get("AudioTTSIndexPageClone"))
-        self.clone_config_button_var.set(Language.get("AudioTTSIndexPageCloneConfig"))
-        self.clone_update_button_var.set(Language.get("AudioTTSIndexPageCloneUpdate"))
+        self.voice_label_var.set(Language.get("AudioTTSIndexPageVoice"))
         self.progress_label_var.set(Language.get("AudioTTSIndexPageProgress"))
         self.start_button_var.set(Language.get("AudioTTSIndexPageStart"))
         self.stop_button_var.set(Language.get("AudioTTSIndexPageStop"))
@@ -85,7 +69,32 @@ class IndexPage(BasePage):
         ]
         self.mode_combobox.configure(values=Option.get_text_list(self.mode_source))
 
-        self.update_clones()
+        self.voice_source = [
+            Option(f"{Language.get("AudioTTSIndexPageVoiceEnFemale")} [ af_maple ]", "af_maple"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceEnFemale")} [ af_sol ]", "af_sol"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceEnFemale")} [ bf_vale ]", "bf_vale"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhFemale")} [ zf_001 ]", "zf_001"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhFemale")} [ zf_002 ]", "zf_002"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhFemale")} [ zf_003 ]", "zf_003"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhFemale")} [ zf_004 ]", "zf_004"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhFemale")} [ zf_005 ]", "zf_005"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhFemale")} [ zf_006 ]", "zf_006"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhFemale")} [ zf_007 ]", "zf_007"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhFemale")} [ zf_008 ]", "zf_008"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhFemale")} [ zf_017 ]", "zf_017"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhFemale")} [ zf_018 ]", "zf_018"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhMale")} [ zm_009 ]", "zm_009"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhMale")} [ zm_010 ]", "zm_010"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhMale")} [ zm_011 ]", "zm_011"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhMale")} [ zm_012 ]", "zm_012"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhMale")} [ zm_013 ]", "zm_013"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhMale")} [ zm_014 ]", "zm_014"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhMale")} [ zm_015 ]", "zm_015"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhMale")} [ zm_016 ]", "zm_016"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhMale")} [ zm_020 ]", "zm_020"),
+            Option(f"{Language.get("AudioTTSIndexPageVoiceZhMale")} [ zm_025 ]", "zm_025"),
+        ]
+        self.voice_combobox.configure(values=Option.get_text_list(self.voice_source))
 
         self.file_switch_source = [
             Option(Language.get("AudioTTSIndexPageInputFolder"), "input"),
@@ -95,25 +104,6 @@ class IndexPage(BasePage):
         self.file_switch.set(self.file_switch_source[0].text)
 
         self.add_message(Language.get("AudioTTSHelp"), "success")
-
-    def get_clones(self):
-        result = []
-        audios = FileHelper.get_paths(AudioConst.TTS.model_clone_dir, AppConst.audio_exts)
-        for audio in audios:
-            dir = os.path.dirname(audio)
-            base = os.path.basename(audio)
-            name = os.path.splitext(base)[0]
-            text = os.path.join(dir, f"{name}.txt")
-            if os.path.isfile(text):
-                result.append(Option(base, (audio, text)))
-        return result
-
-    def update_clones(self):
-        self.clone_source = self.get_clones()
-        if not self.clone_source:
-            return
-        self.clone_combobox.configure(values=Option.get_text_list(self.clone_source))
-        self.clone_combobox.set(self.clone_source[0].text)
 
     def set_show(self):
         self.update()
@@ -139,13 +129,13 @@ class IndexPage(BasePage):
         item = Option.get_value_item(self.mode_source, value)
         self.mode_combobox.set(item.text)
 
-    def get_clone(self):
-        item = Option.get_text_item(self.clone_source, self.clone_combobox.get())
+    def get_voice(self):
+        item = Option.get_text_item(self.voice_source, self.voice_combobox.get())
         return item.value
 
-    def set_clone(self, value):
-        item = Option.get_value_item(self.clone_source, value)
-        self.clone_combobox.set(item.text)
+    def set_voice(self, value):
+        item = Option.get_value_item(self.voice_source, value)
+        self.voice_combobox.set(item.text)
 
     def set_file_view(self):
         path = self.file_grid.get_checked_item()
@@ -186,10 +176,10 @@ class IndexPage(BasePage):
             mode = self.get_mode()
             if mode is None:
                 raise Exception(f"{Language.get("AudioTTSIndexPageParamError")}: mode: {mode}")
-            clone = self.get_clone()
-            if clone is None:
-                raise Exception(f"{Language.get("AudioTTSIndexPageParamError")}: clone: {clone}")
-            self.index_service.start(input, output, input_files, provider, mode, clone)
+            voice = self.get_voice()
+            if voice is None:
+                raise Exception(f"{Language.get("AudioTTSIndexPageParamError")}: voice: {voice}")
+            self.index_service.start(input, output, input_files, provider, mode, voice)
             self.set_file_switch_grid_view("output")
         except ActivationException:
             Validate.license_order_window_show()
@@ -199,12 +189,3 @@ class IndexPage(BasePage):
             self.start_button.configure(state="normal")
             self.stop_button.configure(state="disabled")
             self.set_progress(0)
-
-    def clone_config_button_command(self):
-        try:
-            os.startfile(os.path.abspath(AudioConst.TTS.model_clone_dir))
-        except Exception as e:
-            self.add_message(e, "error")
-
-    def clone_update_button_command(self):
-        self.update_clones()

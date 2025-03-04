@@ -160,8 +160,8 @@ class IndexPage(customtkinter.CTkFrame):
             self.send_button.configure(state="disabled")
             self.prompt_label_var.set(Language.get("GenChatIndexPageModelProcessWait"))
             self.index_service.cancel.clear()
-            self.prompt, self.assistant = self.gen_view.send_and_build_model(ChatModel(type=GenConst.Chat.type_user, text=self.prompt))
             self.clear_prompt()
+            self.prompt, self.assistant = self.gen_view.send_and_build_model(ChatModel(type=GenConst.Chat.type_user, text=self.prompt))
             self.index_service.start(self.prompt)
             self.prompt_label_var.set(Language.get("GenChatIndexPageInputPrompt"))
         except ActivationException:
