@@ -1,0 +1,10 @@
+export const enum ResultEnum {
+  SUCCESS = "00000",
+  ERROR = "B0001",
+  ACCESS_TOKEN_INVALID = "A0230",
+  REFRESH_TOKEN_INVALID = "A0231",
+  OK = 200,
+  BAD_REQUEST = 400,
+  UNAUTHORIZED = 401,
+  FORBIDDEN = 403,
+}

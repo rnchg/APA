@@ -1,0 +1,384 @@
+from server import server
+
+from controllers.base.base_controller import BaseController
+
+
+class HomeController(BaseController):
+    def __init__(self):
+        super().__init__()
+
+        self.base_url = f"{self.base_api}/home"
+
+    def setup_routes(self):
+        
+        @server.route(f"{self.base_url}/getRoutes", methods=["GET"])
+        def home_getRoutes():
+            data = [
+                {
+                    "path": "/Gen",
+                    "name": "/Gen",
+                    "component": "Layout",
+                    "redirect": "/Gen/Chat/Index",
+                    "meta": {
+                        "title": "Gen",
+                        "icon": "el-icon-ChatDotRound",
+                        "hidden": False,
+                        "keepAlive": False,
+                        "alwaysShow": False,
+                        "params": None,
+                    },
+                    "children": [
+                        {
+                            "path": "/Gen/Chat/Index",
+                            "component": "Gen/Chat/Index",
+                            "name": "/Gen/Chat/Index",
+                            "meta": {
+                                "title": "GenChat",
+                                "icon": "el-icon-ChatDotRound",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                    ],
+                },
+                {
+                    "path": "/Image",
+                    "name": "/Image",
+                    "component": "Layout",
+                    "redirect": "/Image/SuperResolution/Index",
+                    "meta": {
+                        "title": "Image",
+                        "icon": "el-icon-Picture",
+                        "hidden": False,
+                        "keepAlive": False,
+                        "alwaysShow": False,
+                        "params": None,
+                    },
+                    "children": [
+                        {
+                            "path": "/Image/SuperResolution/Index",
+                            "name": "/Image/SuperResolution/Index",
+                            "component": "Image/SuperResolution/Index",
+                            "meta": {
+                                "title": "ImageSuperResolution",
+                                "icon": "el-icon-Picture",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                        {
+                            "path": "/Image/AutoWipe/Index",
+                            "name": "/Image/AutoWipe/Index",
+                            "component": "Image/AutoWipe/Index",
+                            "meta": {
+                                "title": "ImageAutoWipe",
+                                "icon": "el-icon-Picture",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                        {
+                            "path": "/Image/CartoonComic/Index",
+                            "name": "/Image/CartoonComic/Index",
+                            "component": "Image/CartoonComic/Index",
+                            "meta": {
+                                "title": "ImageCartoonComic",
+                                "icon": "el-icon-Picture",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                        {
+                            "path": "/Image/Convert3d/Index",
+                            "name": "/Image/Convert3d/Index",
+                            "component": "Image/Convert3d/Index",
+                            "meta": {
+                                "title": "ImageConvert3d",
+                                "icon": "el-icon-Picture",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                        {
+                            "path": "/Image/ColorRestoration/Index",
+                            "name": "/Image/ColorRestoration/Index",
+                            "component": "Image/ColorRestoration/Index",
+                            "meta": {
+                                "title": "ImageColorRestoration",
+                                "icon": "el-icon-Picture",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                        {
+                            "path": "/Image/FrameInterpolation/Index",
+                            "name": "/Image/FrameInterpolation/Index",
+                            "component": "Image/FrameInterpolation/Index",
+                            "meta": {
+                                "title": "ImageFrameInterpolation",
+                                "icon": "el-icon-Picture",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                        {
+                            "path": "/Image/Matting/Index",
+                            "name": "/Image/Matting/Index",
+                            "component": "Image/Matting/Index",
+                            "meta": {
+                                "title": "ImageMatting",
+                                "icon": "el-icon-Picture",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                        {
+                            "path": "/Image/FaceRestoration/Index",
+                            "name": "/Image/FaceRestoration/Index",
+                            "component": "Image/FaceRestoration/Index",
+                            "meta": {
+                                "title": "ImageFaceRestoration",
+                                "icon": "el-icon-Picture",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                    ],
+                },
+                {
+                    "path": "/Video",
+                    "name": "/Video",
+                    "component": "Layout",
+                    "redirect": "/Video/SuperResolution/Index",
+                    "meta": {
+                        "title": "Video",
+                        "icon": "el-icon-VideoCamera",
+                        "hidden": False,
+                        "keepAlive": False,
+                        "alwaysShow": False,
+                        "params": None,
+                    },
+                    "children": [
+                        {
+                            "path": "/Video/SuperResolution/Index",
+                            "name": "/Video/SuperResolution/Index",
+                            "component": "Video/SuperResolution/Index",
+                            "meta": {
+                                "title": "VideoSuperResolution",
+                                "icon": "el-icon-VideoCamera",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                        {
+                            "path": "/Video/AutoWipe/Index",
+                            "name": "/Video/AutoWipe/Index",
+                            "component": "Video/AutoWipe/Index",
+                            "meta": {
+                                "title": "VideoAutoWipe",
+                                "icon": "el-icon-VideoCamera",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                        {
+                            "path": "/Video/CartoonComic/Index",
+                            "name": "/Video/CartoonComic/Index",
+                            "component": "Video/CartoonComic/Index",
+                            "meta": {
+                                "title": "VideoCartoonComic",
+                                "icon": "el-icon-VideoCamera",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                        {
+                            "path": "/Video/Convert3d/Index",
+                            "name": "/Video/Convert3d/Index",
+                            "component": "Video/Convert3d/Index",
+                            "meta": {
+                                "title": "VideoConvert3d",
+                                "icon": "el-icon-VideoCamera",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                        {
+                            "path": "/Video/ColorRestoration/Index",
+                            "name": "/Video/ColorRestoration/Index",
+                            "component": "Video/ColorRestoration/Index",
+                            "meta": {
+                                "title": "VideoColorRestoration",
+                                "icon": "el-icon-VideoCamera",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                        {
+                            "path": "/Video/FrameInterpolation/Index",
+                            "name": "/Video/FrameInterpolation/Index",
+                            "component": "Video/FrameInterpolation/Index",
+                            "meta": {
+                                "title": "VideoFrameInterpolation",
+                                "icon": "el-icon-VideoCamera",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                        {
+                            "path": "/Video/Matting/Index",
+                            "name": "/Video/Matting/Index",
+                            "component": "Video/Matting/Index",
+                            "meta": {
+                                "title": "VideoMatting",
+                                "icon": "el-icon-VideoCamera",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                        {
+                            "path": "/Video/Organization/Index",
+                            "name": "/Video/Organization/Index",
+                            "component": "Video/Organization/Index",
+                            "meta": {
+                                "title": "VideoOrganization",
+                                "icon": "el-icon-VideoCamera",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                    ],
+                },
+                {
+                    "path": "/Audio",
+                    "name": "/Audio",
+                    "component": "Layout",
+                    "redirect": "/Audio/VocalSplit/Index",
+                    "meta": {
+                        "title": "Audio",
+                        "icon": "el-icon-Headset",
+                        "hidden": False,
+                        "keepAlive": False,
+                        "alwaysShow": False,
+                        "params": None,
+                    },
+                    "children": [
+                        {
+                            "path": "/Audio/VocalSplit/Index",
+                            "name": "/Audio/VocalSplit/Index",
+                            "component": "Audio/VocalSplit/Index",
+                            "meta": {
+                                "title": "AudioVocalSplit",
+                                "icon": "el-icon-Headset",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                        {
+                            "path": "/Audio/Denoise/Index",
+                            "name": "/Audio/Denoise/Index",
+                            "component": "Audio/Denoise/Index",
+                            "meta": {
+                                "title": "AudioDenoise",
+                                "icon": "el-icon-Headset",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                        {
+                            "path": "/Audio/TTS/Index",
+                            "name": "/Audio/TTS/Index",
+                            "component": "Audio/TTS/Index",
+                            "meta": {
+                                "title": "AudioTTS",
+                                "icon": "el-icon-Headset",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                        {
+                            "path": "/Audio/STT/Index",
+                            "name": "/Audio/STT/Index",
+                            "component": "Audio/STT/Index",
+                            "meta": {
+                                "title": "AudioSTT",
+                                "icon": "el-icon-Headset",
+                                "hidden": False,
+                                "keepAlive": True,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                    ],
+                },
+                {
+                    "path": "/Setting",
+                    "name": "/Setting",
+                    "component": "Layout",
+                    "redirect": "/Setting/Index",
+                    "meta": {
+                        "title": "Setting",
+                        "icon": "el-icon-Setting",
+                        "hidden": False,
+                        "keepAlive": False,
+                        "alwaysShow": False,
+                        "params": None,
+                    },
+                    "children": [
+                        {
+                            "path": "/Setting/Index",
+                            "name": "/Setting/Index",
+                            "component": "Setting/Index",
+                            "meta": {
+                                "title": "Setting",
+                                "icon": "el-icon-Setting",
+                                "hidden": False,
+                                "keepAlive": False,
+                                "alwaysShow": False,
+                                "params": None,
+                            },
+                        },
+                    ],
+                },
+            ]
+            return self.ok(data)

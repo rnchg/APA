@@ -58,8 +58,8 @@ We will continue to integrate and optimize more AI models to meet the diverse ne
 
 ### Instructions and technical support
 - **Email**: [Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)
-- **Github**: [github.com/rnchg/Apt](https://github.com/rnchg/apa)
-- **Gitee**: [gitee.com/rnchg/apt](https://gitee.com/rnchg/apa)
+- **Github**: [github.com/rnchg/APA](https://github.com/rnchg/APA)
+- **Gitee**: [gitee.com/rnchg/APA](https://gitee.com/rnchg/APA)
 - **Youtube**: [Light Cloud Wind](https://www.youtube.com/channel/UCHKH3bLpd8giPyr6x5sKGfw)
 - **Bilibili**: [风轻云也净](https://space.bilibili.com/478375442)
 - **QQ**: 6085398
