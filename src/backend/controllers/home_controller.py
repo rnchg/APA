@@ -1,5 +1,3 @@
-from server import server
-
 from controllers.base.base_controller import BaseController
 
 
@@ -10,15 +8,15 @@ class HomeController(BaseController):
         self.base_url = f"{self.base_api}/home"
 
     def setup_routes(self):
-        
-        @server.route(f"{self.base_url}/getRoutes", methods=["GET"])
+
+        @self.base_server.route(f"{self.base_url}/getRoutes", methods=["GET"])
         def home_getRoutes():
             data = [
                 {
-                    "path": "/Gen",
+                    "path": "/",
                     "name": "/Gen",
                     "component": "Layout",
-                    "redirect": "/Gen/Chat/Index",
+                    "redirect": "/",
                     "meta": {
                         "title": "Gen",
                         "icon": "el-icon-ChatDotRound",
@@ -44,10 +42,10 @@ class HomeController(BaseController):
                     ],
                 },
                 {
-                    "path": "/Image",
+                    "path": "/",
                     "name": "/Image",
                     "component": "Layout",
-                    "redirect": "/Image/SuperResolution/Index",
+                    "redirect": "/",
                     "meta": {
                         "title": "Image",
                         "icon": "el-icon-Picture",
@@ -164,10 +162,10 @@ class HomeController(BaseController):
                     ],
                 },
                 {
-                    "path": "/Video",
+                    "path": "/",
                     "name": "/Video",
                     "component": "Layout",
-                    "redirect": "/Video/SuperResolution/Index",
+                    "redirect": "/",
                     "meta": {
                         "title": "Video",
                         "icon": "el-icon-VideoCamera",
@@ -284,10 +282,10 @@ class HomeController(BaseController):
                     ],
                 },
                 {
-                    "path": "/Audio",
+                    "path": "/",
                     "name": "/Audio",
                     "component": "Layout",
-                    "redirect": "/Audio/VocalSplit/Index",
+                    "redirect": "/",
                     "meta": {
                         "title": "Audio",
                         "icon": "el-icon-Headset",
@@ -352,10 +350,10 @@ class HomeController(BaseController):
                     ],
                 },
                 {
-                    "path": "/Setting",
+                    "path": "/",
                     "name": "/Setting",
                     "component": "Layout",
-                    "redirect": "/Setting/Index",
+                    "redirect": "/",
                     "meta": {
                         "title": "Setting",
                         "icon": "el-icon-Setting",

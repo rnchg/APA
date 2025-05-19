@@ -3,7 +3,6 @@ from datetime import datetime
 
 import webview
 from flask import request, Response, send_file
-from server import server
 
 from core.consts.app_const import AppConst
 from core.utility.current import Current
@@ -27,18 +26,18 @@ class MattingController(BaseController):
 
     def setup_routes(self):
 
-        @server.route(f"{self.base_url}/getConfig", methods=["POST"])
+        @self.base_server.route(f"{self.base_url}/getConfig", methods=["POST"])
         def image_matting_getConfig():
             data = Current.config.image_matting.to_dict()
             return self.ok(data)
 
-        @server.route(f"{self.base_url}/setConfig", methods=["POST"])
+        @self.base_server.route(f"{self.base_url}/setConfig", methods=["POST"])
         def image_matting_setConfig():
             data = request.json["data"]
             Current.config.image_matting.dict_to(data)
             return self.ok()
 
-        @server.route(f"{self.base_url}/getFolder", methods=["POST"])
+        @self.base_server.route(f"{self.base_url}/getFolder", methods=["POST"])
         def image_matting_getFolder():
             path = request.json["path"]
             folders = webview.windows[0].create_file_dialog(webview.FOLDER_DIALOG, directory=path)
@@ -46,7 +45,7 @@ class MattingController(BaseController):
                 return self.badRequest(message=f"Image.Matting.FolderError: path: {path}")
             return self.ok({"folder": folders[0]})
 
-        @server.route(f"{self.base_url}/getFileGrid", methods=["POST"])
+        @self.base_server.route(f"{self.base_url}/getFileGrid", methods=["POST"])
         def image_matting_getFileGrid():
             folder = request.json["folder"]
             exts = request.json["exts"]
@@ -59,27 +58,27 @@ class MattingController(BaseController):
             files = [{"path": path, "basename": os.path.basename(path), "size": os.path.getsize(path), "mtime": datetime.fromtimestamp(os.path.getmtime(path)).strftime("%Y-%m-%d %H:%M:%S")} for path in paths]
             return self.ok({"files": files})
 
-        @server.route(f"{self.base_url}/getFileUrl", methods=["POST"])
+        @self.base_server.route(f"{self.base_url}/getFileUrl", methods=["POST"])
         def image_matting_getFileUrl():
             file = request.json["file"]
             return self.ok({"url": f"{request.url.replace("getFileUrl", "getFileView")}?file={file}"})
 
-        @server.route(f"{self.base_url}/getFileView", methods=["GET"])
+        @self.base_server.route(f"{self.base_url}/getFileView", methods=["GET"])
         def image_matting_getFileView():
             file = request.args["file"]
             return send_file(file)
 
-        @server.route(f"{self.base_url}/start", methods=["POST"])
+        @self.base_server.route(f"{self.base_url}/start", methods=["POST"])
         def image_matting_start():
             data = request.json["data"]
             return Response(self.start(data), content_type="text/event-stream")
 
-        @server.route(f"{self.base_url}/stop", methods=["POST"])
+        @self.base_server.route(f"{self.base_url}/stop", methods=["POST"])
         def image_matting_stop():
             self.base_service.is_stop = True
             return self.ok()
 
-        @server.route(f"{self.base_url}/open", methods=["POST"])
+        @self.base_server.route(f"{self.base_url}/open", methods=["POST"])
         def image_matting_open():
             path = request.json["path"]
             if not os.path.exists(path):

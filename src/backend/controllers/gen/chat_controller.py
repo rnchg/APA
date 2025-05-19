@@ -1,5 +1,4 @@
 from flask import request, Response
-from server import server
 
 from core.consts.app_const import AppConst
 from core.utility.current import Current
@@ -22,31 +21,31 @@ class ChatController(BaseController):
 
     def setup_routes(self):
 
-        @server.route(f"{self.base_url}/getConfig", methods=["POST"])
+        @self.base_server.route(f"{self.base_url}/getConfig", methods=["POST"])
         def audio_chat_getConfig():
             data = Current.config.gen_chat.to_dict()
             return self.ok(data)
 
-        @server.route(f"{self.base_url}/setConfig", methods=["POST"])
+        @self.base_server.route(f"{self.base_url}/setConfig", methods=["POST"])
         def audio_chat_setConfig():
             data = request.json["data"]
             Current.config.gen_chat.dict_to(data)
             return self.ok()
 
-        @server.route(f"{self.base_url}/getInit", methods=["POST"])
+        @self.base_server.route(f"{self.base_url}/getInit", methods=["POST"])
         def gen_chat_getInit():
             return self.ok({"is_init": self.base_service.is_init})
 
-        @server.route(f"{self.base_url}/init", methods=["POST"])
+        @self.base_server.route(f"{self.base_url}/init", methods=["POST"])
         def gen_chat_init():
             return Response(self.init(), content_type="text/event-stream")
 
-        @server.route(f"{self.base_url}/start", methods=["POST"])
+        @self.base_server.route(f"{self.base_url}/start", methods=["POST"])
         def gen_chat_start():
             data = request.json["data"]
             return Response(self.start(data), content_type="text/event-stream")
 
-        @server.route(f"{self.base_url}/stop", methods=["POST"])
+        @self.base_server.route(f"{self.base_url}/stop", methods=["POST"])
         def gen_chat_stop():
             self.base_service.is_stop = True
             return self.ok()
