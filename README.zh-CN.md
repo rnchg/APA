@@ -1,7 +1,7 @@
 | [English](README.en-US.md) | 中文 |
 
 # AI 生产力助手
-免费开源，提升用户生产力，保障隐私和数据安全。提供高效便捷的AI解决方案，包括但不限于：内置本地专属ChatGPT、DeepSeek，一键批量智能处理图片、视频、音频等。
+免费开源，提升用户生产力，保障隐私和数据安全。提供高效便捷的AI解决方案，包括但不限于：内置本地专属ChatGPT、DeepSeek、Phi，一键批量智能处理图片、视频、音频等。
 
 ## 主要特点
 - **免费开源**：免费使用，源代码开放，用户可以自行查阅和修改。
@@ -52,7 +52,7 @@
 将继续集成优化更多AI模型，以满足用户的多样化需求。
 
 ### 开源及下载地址
-- | [Github](https://github.com/rnchg/apa/releases/latest) | [Gitee](https://gitee.com/rnchg/apa/releases/latest) | [谷歌云盘](https://drive.google.com/drive/folders/1WgallXe2G0jo0fKyFYWFnWJLuksqSqWb) | [百度云盘](https://pan.baidu.com/s/1k-IBphtLJuXQBSbp2b2Bew?pwd=1234) | [腾讯微云](https://share.weiyun.com/iyKCgmZL) |
+- | [Github](https://github.com/rnchg/APA/releases/latest) | [Gitee](https://gitee.com/rnchg/APA/releases/latest) | [谷歌云盘](https://drive.google.com/drive/folders/1WgallXe2G0jo0fKyFYWFnWJLuksqSqWb) | [百度云盘](https://pan.baidu.com/s/1k-IBphtLJuXQBSbp2b2Bew?pwd=1234) | [腾讯微云](https://share.weiyun.com/iyKCgmZL) |
 - **完整版（Full）**：包含所有功能。
 - **精简版（Lite）**：包含除【生成对话】之外的所有功能。
 
@@ -73,8 +73,8 @@
 ![图片处理](.assets/zh-CN/image_auto_wipe.png)
 视频处理
 ![视频处理](.assets/zh-CN/video_cartoon_comic.png)
-视频处理
-![视频处理](.assets/zh-CN/video_super_resolution.png)
+音频处理
+![音频处理](.assets/zh-CN/audio_vocal_split.png)
 设置
 ![设置](.assets/zh-CN/settings.png)
 

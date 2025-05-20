@@ -1,7 +1,7 @@
 | English | [中文](README.zh-CN.md) |
 
 # AI Productivity Assistant
-Free and open source, improve user productivity, and protect privacy and data security. Provide efficient and convenient AI solutions, including but not limited to: built-in local exclusive ChatGPT, DeepSeek, one-click batch intelligent processing of images, videos, audio, etc.
+Free and open source, improve user productivity, and protect privacy and data security. Provide efficient and convenient AI solutions, including but not limited to: built-in local exclusive ChatGPT, DeepSeek, Phi, one-click batch intelligent processing of images, videos, audio, etc.
 
 ## Main features
 - **Free and open source**: free to use, open source code, users can check and modify it by themselves.
@@ -52,7 +52,7 @@ Free and open source, improve user productivity, and protect privacy and data se
 We will continue to integrate and optimize more AI models to meet the diverse needs of users.
 
 ### Open source and download address
-- | [Github](https://github.com/rnchg/apa/releases/latest) | [Gitee](https://gitee.com/rnchg/apa/releases/latest) | [Google Drive](https://drive.google.com/drive/folders/1WgallXe2G0jo0fKyFYWFnWJLuksqSqWb) | [Baidu Drive](https://pan.baidu.com/s/1k-IBphtLJuXQBSbp2b2Bew?pwd=1234) | [Tencent Weiyun](https://share.weiyun.com/iyKCgmZL) |
+- | [Github](https://github.com/rnchg/APA/releases/latest) | [Gitee](https://gitee.com/rnchg/APA/releases/latest) | [Google Drive](https://drive.google.com/drive/folders/1WgallXe2G0jo0fKyFYWFnWJLuksqSqWb) | [Baidu Drive](https://pan.baidu.com/s/1k-IBphtLJuXQBSbp2b2Bew?pwd=1234) | [Tencent Weiyun](https://share.weiyun.com/iyKCgmZL) |
 - **Full version**: includes all functions.
 - **Lite version**: includes all functions except [Generate Chat].
 
@@ -73,8 +73,8 @@ Image processing
 ![Image processing](.assets/en-US/image_auto_wipe.png)
 Video processing
 ![Video processing](.assets/en-US/video_cartoon_comic.png)
-Video processing
-![Video processing](.assets/en-US/video_super_resolution.png)
+Audio processing
+![Audio processing](.assets/en-US/audio_vocal_split.png)
 Settings
 ![Settings](.assets/en-US/settings.png)
 
