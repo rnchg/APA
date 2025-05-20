@@ -5,7 +5,7 @@ from core.helpers.file_helper import FileHelper
 from services.app_service import AppService
 
 
-logger = Logger(FileHelper.frozen_executable_path("logs")).logger
+logger = Logger().logger
 sys.stdout = logger
 sys.stderr = logger
 
