@@ -1,4 +1,5 @@
 @use "./reset";
+@use "./element-plus";
 
 .app-container {
   padding: 15px;
@@ -71,5 +72,5 @@
 
 .el-menu-item,
 .el-sub-menu__title {
-  height: 34px !important;
+  height: 33px !important;
 }

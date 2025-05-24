@@ -12,7 +12,7 @@ from core.exceptions.activation_exception import ActivationException
 
 from controllers.base.base_controller import BaseController
 
-from core.services.pages.audio.denoise_service import DenoiseService
+from core.services.audio.denoise_service import DenoiseService
 
 
 class DenoiseController(BaseController):

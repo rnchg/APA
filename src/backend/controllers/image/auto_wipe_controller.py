@@ -13,7 +13,7 @@ from core.exceptions.activation_exception import ActivationException
 
 from controllers.base.base_controller import BaseController
 
-from core.services.pages.image.auto_wipe_service import AutoWipeService
+from core.services.image.auto_wipe_service import AutoWipeService
 
 
 class AutoWipeController(BaseController):

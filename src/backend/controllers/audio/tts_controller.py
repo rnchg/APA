@@ -12,7 +12,7 @@ from core.exceptions.activation_exception import ActivationException
 
 from controllers.base.base_controller import BaseController
 
-from core.services.pages.audio.tts_service import TTSService
+from core.services.audio.tts_service import TTSService
 
 
 class TTSController(BaseController):

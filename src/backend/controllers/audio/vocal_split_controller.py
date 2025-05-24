@@ -12,7 +12,7 @@ from core.exceptions.activation_exception import ActivationException
 
 from controllers.base.base_controller import BaseController
 
-from core.services.pages.audio.vocal_split_service import VocalSplitService
+from core.services.audio.vocal_split_service import VocalSplitService
 
 
 class VocalSplitController(BaseController):

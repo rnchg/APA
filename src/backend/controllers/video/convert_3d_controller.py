@@ -12,7 +12,7 @@ from core.exceptions.activation_exception import ActivationException
 
 from controllers.base.base_controller import BaseController
 
-from core.services.pages.video.convert_3d_service import Convert3dService
+from core.services.video.convert_3d_service import Convert3dService
 
 
 class Convert3dController(BaseController):

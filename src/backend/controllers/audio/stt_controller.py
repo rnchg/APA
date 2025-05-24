@@ -12,7 +12,7 @@ from core.exceptions.activation_exception import ActivationException
 
 from controllers.base.base_controller import BaseController
 
-from core.services.pages.audio.stt_service import STTService
+from core.services.audio.stt_service import STTService
 
 
 class STTController(BaseController):

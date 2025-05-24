@@ -7,7 +7,7 @@ from core.exceptions.activation_exception import ActivationException
 
 from controllers.base.base_controller import BaseController
 
-from core.services.pages.gen.chat_service import ChatService
+from core.services.gen.chat_service import ChatService
 
 
 class ChatController(BaseController):

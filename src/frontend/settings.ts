@@ -11,7 +11,7 @@ const defaultSettings: AppSettings = {
   title: "APA",
   // 系统版本
   // version: pkg.version,
-  version: "2.0.0",
+  version: "2.0.2",
   // 是否显示设置
   // showSettings: true,
   showSettings: false,

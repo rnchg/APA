@@ -12,7 +12,7 @@ from core.exceptions.activation_exception import ActivationException
 
 from controllers.base.base_controller import BaseController
 
-from core.services.pages.video.color_restoration_service import ColorRestorationService
+from core.services.video.color_restoration_service import ColorRestorationService
 
 
 class ColorRestorationController(BaseController):

@@ -1,6 +1,6 @@
 import type { App } from "vue";
 
-import { setupDirective } from "@/directive";
+// import { setupDirective } from "@/directive";
 import { setupI18n } from "@/lang";
 import { setupRouter } from "@/router";
 import { setupStore } from "@/store";
@@ -13,7 +13,7 @@ import { InstallCodeMirror } from "codemirror-editor-vue3";
 export default {
   install(app: App<Element>) {
     // 自定义指令(directive)
-    setupDirective(app);
+    // setupDirective(app);
     // 路由(router)
     setupRouter(app);
     // 状态管理(store)
