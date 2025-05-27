@@ -4,6 +4,11 @@
       <ChatView ref="chatViewRef" v-model:chatMessageData="chatMessageData" />
     </el-card>
     <el-card>
+      <el-row>
+        <el-col :span="24">
+          <el-text>{{ t("Gen.Chat.InputPrompt") }}</el-text>
+        </el-col>
+      </el-row>
       <el-row class="mb-2">
         <el-input
           v-model="prompt"
