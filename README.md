@@ -7,7 +7,7 @@ Free and open source, improve user productivity, and protect privacy and data se
 - **Free and open source**: free to use, open source code, users can check and modify it by themselves.
 - **Privacy protection**: local deployment, all data is processed locally to ensure user privacy and data security.
 - **Offline use**: no need to connect to the Internet, can run offline, avoiding the impact of network restrictions.
-- **No installation and configuration**: no need to install and configure, just unzip and start running with one click, convenient and fast.
+- **No installation configuration**: no installation configuration required, just unzip and start running with one click, one click to enable web service sharing, convenient and fast.
 - **Multi-language support**: support multi-language internationalization to meet the needs of global users.
 
 ### Generate Chat

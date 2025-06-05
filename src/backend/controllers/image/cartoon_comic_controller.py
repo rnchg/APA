@@ -3,6 +3,7 @@ from datetime import datetime
 
 import webview
 from flask import request, Response, send_file
+from urllib.parse import quote_plus, unquote_plus
 
 from core.consts.app_const import AppConst
 from core.utility.current import Current
@@ -36,7 +37,7 @@ class CartoonComicController(BaseController):
             data = request.json["data"]
             Current.config.image_cartoon_comic.dict_to(data)
             return self.ok()
-        
+
         @self.base_server.route(f"{self.base_url}/getFolder", methods=["POST"])
         def image_cartoon_comic_getFolder():
             path = request.json["path"]
@@ -61,12 +62,12 @@ class CartoonComicController(BaseController):
         @self.base_server.route(f"{self.base_url}/getFileUrl", methods=["POST"])
         def image_cartoon_comic_getFileUrl():
             file = request.json["file"]
-            return self.ok({"url": f"{request.url.replace("getFileUrl", "getFileView")}?file={file}"})
+            return self.ok({"url": f"{request.url.replace("getFileUrl", "getFileView")}?file={quote_plus(file)}"})
 
         @self.base_server.route(f"{self.base_url}/getFileView", methods=["GET"])
         def image_cartoon_comic_getFileView():
             file = request.args["file"]
-            return send_file(file)
+            return send_file(unquote_plus(file))
 
         @self.base_server.route(f"{self.base_url}/start", methods=["POST"])
         def image_cartoon_comic_start():
