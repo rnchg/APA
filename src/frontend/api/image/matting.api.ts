@@ -14,32 +14,32 @@ const API = {
     return request<any, any>({
       url: `${BASE_URL}/setConfig`,
       method: "post",
-      data: { data: data },
+      data: { data },
     });
   },
   getFolder(path: string) {
     return request<any, any>({
       url: `${BASE_URL}/getFolder`,
       method: "post",
-      data: { path: path },
+      data: { path },
     });
   },
   getFileGrid(folder: string, exts: string) {
     return request<any, any>({
       url: `${BASE_URL}/getFileGrid`,
       method: "post",
-      data: { folder: folder, exts: exts },
+      data: { folder, exts },
     });
   },
   getFileUrl(file: string) {
     return request<any, any>({
       url: `${BASE_URL}/getFileUrl`,
       method: "post",
-      data: { file: file },
+      data: { file },
     });
   },
   start(data: object, onmessage: any, onerror: any) {
-    return ssePostRequset(`${BASE_API}${BASE_URL}/start`, { data: data }, onmessage, onerror);
+    return ssePostRequset(`${BASE_API}${BASE_URL}/start`, { data }, onmessage, onerror);
   },
   stop() {
     return request({
@@ -51,7 +51,7 @@ const API = {
     return request({
       url: `${BASE_URL}/open`,
       method: "post",
-      data: { path: path },
+      data: { path },
     });
   },
 };

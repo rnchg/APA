@@ -14,7 +14,7 @@ const API = {
     return request<any, any>({
       url: `${BASE_URL}/setConfig`,
       method: "post",
-      data: { data: data },
+      data: { data },
     });
   },
   getInit() {
@@ -24,10 +24,10 @@ const API = {
     });
   },
   init(data: object, onmessage: any, onerror: any) {
-    return ssePostRequset(`${BASE_API}${BASE_URL}/init`, { data: data }, onmessage, onerror);
+    return ssePostRequset(`${BASE_API}${BASE_URL}/init`, { data }, onmessage, onerror);
   },
   start(data: object, onmessage: any, onerror: any) {
-    return ssePostRequset(`${BASE_API}${BASE_URL}/start`, { data: data }, onmessage, onerror);
+    return ssePostRequset(`${BASE_API}${BASE_URL}/start`, { data }, onmessage, onerror);
   },
   stop() {
     return request({

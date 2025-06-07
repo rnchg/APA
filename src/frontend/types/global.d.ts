@@ -61,9 +61,9 @@ declare global {
     /** 是否显示设置 */
     showSettings: boolean;
     /** 是否显示多标签导航 */
-    tagsView: boolean;
-    /** 是否显示侧边栏Logo */
-    sidebarLogo: boolean;
+    showTagsView: boolean;
+    /** 是否显示应用Logo */
+    showAppLogo: boolean;
     /** 导航栏布局(left|top|mix) */
     layout: "left" | "top" | "mix";
     /** 主题颜色 */
@@ -74,8 +74,8 @@ declare global {
     size: string;
     /** 语言( zh-cn| en) */
     language: string;
-    /** 是否开启水印 */
-    watermarkEnabled: boolean;
+    /** 是否显示水印 */
+    showWatermark: boolean;
     /** 水印内容 */
     watermarkContent: string;
     /** 侧边栏配色方案 */

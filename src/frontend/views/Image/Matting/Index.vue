@@ -162,7 +162,8 @@ function setFileGrid() {
     return;
   }
   API.getFileGrid(folder, fileSwitchItem.value).then((data) => {
-    if (!data.files) {
+    if (data.files === undefined || data.files.length === 0) {
+      fileTableData.value = [];
       return;
     }
     fileTableData.value = data.files;
@@ -180,9 +181,9 @@ function setFileGrid() {
 
 function handlefileGridTable(val: FileTable | undefined) {
   if (val) {
-    API.getFileUrl(val.path).then((data) => {
-      fileViewRef.value.imageRef.src = data.url;
-    });
+    API.getFileUrl(val.path).then((data) => (fileViewRef.value.imageRef.src = data.url));
+  } else {
+    fileViewRef.value.imageRef.src = "";
   }
 }
 

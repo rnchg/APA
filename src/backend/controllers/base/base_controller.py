@@ -8,9 +8,9 @@ class BaseController:
         self.base_server = WebService.server
 
     def ok(self, data={}):
-        result = {"success": True, "code": 200, "data": data}
+        result = {"success": True, "code": "200", "data": data}
         return jsonify(result)
 
     def badRequest(self, message=""):
-        result = {"success": False, "code": 400, "message": message}
+        result = {"success": False, "code": "400", "message": message}
         return jsonify(result)

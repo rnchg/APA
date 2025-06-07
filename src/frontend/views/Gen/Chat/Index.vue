@@ -1,7 +1,7 @@
 <template>
-  <div class="app-container" v-loading="modelLoading" :element-loading-text="modelLoadingText">
+  <div v-loading="modelLoading" class="app-container" :element-loading-text="modelLoadingText">
     <el-card class="mb-2">
-      <ChatView ref="chatViewRef" v-model:chatMessageData="chatMessageData" />
+      <ChatView ref="chatViewRef" v-model:chat-message-data="chatMessageData" />
     </el-card>
     <el-card>
       <el-row>
@@ -109,13 +109,13 @@ function handleEnd() {
 }
 
 function handleSendKeydown(event: any) {
-  if (event.ctrlKey && event.code === "Enter") {
+  if (event.altKey && event.key === "Enter") {
     handleSend();
   }
 }
 
 function handleSend() {
-  if (!prompt.value) {
+  if (prompt.value.trim().length === 0) {
     ElMessage.error(t("Gen.Chat.InputPromptEmpty"));
     return;
   }
