@@ -5,15 +5,18 @@
     </el-card>
     <el-card>
       <el-row>
-        <el-col :span="24">
-          <el-text>{{ t("Gen.Chat.InputPrompt") }}</el-text>
+        <el-col :span="12" class="text-left">
+          <el-text>{{ promptInfo }}</el-text>
+        </el-col>
+        <el-col :span="12" class="text-right">
+          <el-text>{{ promptLength }}</el-text>
         </el-col>
       </el-row>
       <el-row class="mb-2">
         <el-input
           v-model="prompt"
-          :placeholder="placeholder"
           type="textarea"
+          :maxlength="formModel.prompt_max_length"
           autosize
           @keydown.enter="handleSendKeydown"
         />
@@ -38,7 +41,7 @@
         </el-col>
       </el-row>
     </el-card>
-    <Config v-model="configVisible" />
+    <Config v-model="configVisible" @save="handleConfigSave" />
     <LicenseOrder v-model="licenseOrderVisible" />
   </div>
 </template>
@@ -46,7 +49,14 @@
 import LicenseOrder from "@/views/License/Order.vue";
 import ChatView, { Message } from "@/views/Component/ChatView.vue";
 import Config from "@/views/Gen/Chat/Config.vue";
+import { assignUpdate } from "@/utils";
 import API from "@/api/gen/chat.api";
+
+interface formType {
+  prompt_system: string;
+  prompt_max_length: number;
+  context_max_length: number;
+}
 
 defineOptions({
   name: "GenChat",
@@ -60,8 +70,17 @@ const licenseOrderVisible = ref(false);
 const modelLoading = ref(false);
 const modelLoadingText = ref(t("Gen.Chat.ModelInitWait"));
 
+const formModel = reactive<formType>({
+  prompt_system: "",
+  prompt_max_length: 0,
+  context_max_length: 0,
+});
+
 const prompt = ref("");
-const placeholder = ref("");
+
+const promptInfo = ref("");
+const promptLength = ref("");
+
 const sendDisabled = ref(false);
 
 const chatViewRef = ref();
@@ -70,7 +89,7 @@ const chatMessageData = ref<Message[]>([]);
 
 const configVisible = ref(false);
 
-function handleInit() {
+function handleInitModel() {
   API.getInit().then((data) => {
     if (data.is_init) {
       return;
@@ -99,17 +118,30 @@ function handleInit() {
   });
 }
 
+function handleInitConfig() {
+  API.getConfig().then((data) => {
+    assignUpdate(formModel, { ...data });
+    handlePromptLength();
+  });
+}
+
+function handlePromptLength() {
+  promptLength.value = `[ ${prompt.value.length}/${formModel.prompt_max_length} ]`;
+}
+
 function handleBegin() {
   prompt.value = "";
   sendDisabled.value = true;
+  promptInfo.value = t("Gen.Chat.ModelProcessWait");
 }
 
 function handleEnd() {
   sendDisabled.value = false;
+  promptInfo.value = t("Gen.Chat.InputPrompt");
 }
 
 function handleSendKeydown(event: any) {
-  if (event.altKey && event.key === "Enter") {
+  if (event.ctrlKey && event.key === "Enter") {
     handleSend();
   }
 }
@@ -167,8 +199,16 @@ function handleConfig() {
   configVisible.value = true;
 }
 
+function handleConfigSave() {
+  handleInitConfig();
+}
+
+watch([prompt], () => handlePromptLength());
+
 onMounted(() => {
   chatViewRef.value.addMessage({ type: "System", text: t("Gen.Chat.Help") });
-  handleInit();
+  promptInfo.value = t("Gen.Chat.InputPrompt");
+  handleInitConfig();
+  handleInitModel();
 });
 </script>

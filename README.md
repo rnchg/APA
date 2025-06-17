@@ -42,7 +42,7 @@ Free and open source, improve user productivity, and protect privacy and data se
 ### Supported Platforms
 |Operating System|Status|Notes|
 |---|---|---|
-|Windows|Released|Windows 10 x64 1709+|
+|Windows|Released|Windows 10 x64 1803+|
 |Android|Under Development||
 |iOS|Under Development||
 |Mac|Planning||
@@ -53,8 +53,6 @@ We will continue to integrate and optimize more AI models to meet the diverse ne
 
 ### Open source and download address
 - | [Github](https://github.com/rnchg/APA/releases/latest) | [Gitee](https://gitee.com/rnchg/APA/releases/latest) | [Google Drive](https://drive.google.com/drive/folders/1WgallXe2G0jo0fKyFYWFnWJLuksqSqWb) | [Baidu Drive](https://pan.baidu.com/s/1k-IBphtLJuXQBSbp2b2Bew?pwd=1234) | [Tencent Weiyun](https://share.weiyun.com/iyKCgmZL) |
-- **Full version**: includes all functions.
-- **Lite version**: includes all functions except [Generate Chat].
 
 ### Instructions and technical support
 - **Email**: [Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)

@@ -42,7 +42,7 @@
 ### 支持平台
 |操作系统|状态|备注|
 |---|---|---|
-|Windows|已发布|Windows 10 x64 1709+|
+|Windows|已发布|Windows 10 x64 1803+|
 |Android|开发中||
 |iOS|开发中||
 |Mac|计划中||
@@ -53,8 +53,6 @@
 
 ### 开源及下载地址
 - | [Github](https://github.com/rnchg/APA/releases/latest) | [Gitee](https://gitee.com/rnchg/APA/releases/latest) | [谷歌云盘](https://drive.google.com/drive/folders/1WgallXe2G0jo0fKyFYWFnWJLuksqSqWb) | [百度云盘](https://pan.baidu.com/s/1k-IBphtLJuXQBSbp2b2Bew?pwd=1234) | [腾讯微云](https://share.weiyun.com/iyKCgmZL) |
-- **完整版（Full）**：包含所有功能。
-- **精简版（Lite）**：包含除【生成对话】之外的所有功能。
 
 ### 使用说明及技术支持
 - **Email**：[Rnchg@Hotmail.com](mailto:Rnchg@Hotmail.com)
