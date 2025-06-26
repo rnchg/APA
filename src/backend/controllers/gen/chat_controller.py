@@ -77,7 +77,8 @@ class ChatController(BaseController):
             prompt = data["prompt"]
             if not prompt:
                 raise Exception("Gen.Chat.InputPromptEmpty")
-            yield from self.base_service.start(prompt)
+            think = data["think"] or False
+            yield from self.base_service.start(prompt, think)
             self.base_service.is_stop = True
         except ActivationException:
             self.base_service.is_auth = False

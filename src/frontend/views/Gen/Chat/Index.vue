@@ -22,12 +22,12 @@
         />
       </el-row>
       <el-row>
-        <el-col :span="12">
+        <el-col :span="10">
           <el-button type="default" round>{{ t("Gen.Chat.Image") }}</el-button>
           <el-button type="default" round>{{ t("Gen.Chat.Video") }}</el-button>
           <el-button type="default" round>{{ t("Gen.Chat.Audio") }}</el-button>
         </el-col>
-        <el-col :span="12" class="text-right">
+        <el-col :span="10" class="text-right">
           <el-button type="success" round @click="handleConfig">
             {{ t("Gen.Chat.Config") }}
           </el-button>
@@ -38,6 +38,14 @@
           <el-button type="primary" round :disabled="sendDisabled" @click="handleSend">
             {{ t("Gen.Chat.Send") }}
           </el-button>
+        </el-col>
+        <el-col :span="4" class="text-right">
+          <el-checkbox
+            v-model="think"
+            :label="t('Gen.Chat.Think')"
+            :disabled="sendDisabled"
+            border
+          />
         </el-col>
       </el-row>
     </el-card>
@@ -75,6 +83,8 @@ const formModel = reactive<formType>({
   prompt_max_length: 0,
   context_max_length: 0,
 });
+
+const think = ref(false);
 
 const prompt = ref("");
 
@@ -151,14 +161,15 @@ function handleSend() {
     ElMessage.error(t("Gen.Chat.InputPromptEmpty"));
     return;
   }
-  const [promptText, assistant] = chatViewRef.value.sendAndBuildMessage({
-    type: "User",
-    text: prompt.value,
-  });
+  const [promptList, thinkMessage, assistantMessage] = chatViewRef.value.sendAndBuildMessage(
+    prompt.value,
+    think.value
+  );
   handleBegin();
   API.start(
     {
-      prompt: promptText,
+      prompt: promptList,
+      think: think.value,
     },
     function (msg: any) {
       const data = JSON.parse(msg.data);
@@ -173,7 +184,7 @@ function handleSend() {
         ElMessage.error(data.message.text);
       }
       if (data.token) {
-        chatViewRef.value.addToken(assistant, data.token);
+        chatViewRef.value.addToken(data.token, think.value, thinkMessage, assistantMessage);
       }
     },
     function (err: any) {

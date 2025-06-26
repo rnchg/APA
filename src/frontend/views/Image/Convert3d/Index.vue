@@ -87,21 +87,21 @@
         <el-card class="mb-2">
           <FileGrid
             ref="fileGridRef"
-            v-model:fileSwitchItem="fileSwitchItem"
-            v-model:fileTableRow="fileTableRow"
-            :fileTableData="fileTableData"
+            v-model:file-switch-item="fileSwitchItem"
+            v-model:file-table-row="fileTableRow"
+            :file-table-data="fileTableData"
             @table-change="handlefileGridTable"
           />
         </el-card>
       </el-col>
       <el-col :sm="12">
         <el-card class="mb-2">
-          <FileView ref="fileViewRef" :imageVisible="true" />
+          <FileView ref="fileViewRef" :image-visible="true" />
         </el-card>
       </el-col>
       <el-col :sm="6">
         <el-card>
-          <FileMessage ref="fileMessageRef" v-model:fileMessageData="fileMessageData" />
+          <FileMessage ref="fileMessageRef" v-model:file-message-data="fileMessageData" />
         </el-card>
       </el-col>
     </el-row>
@@ -285,6 +285,8 @@ function handleOpen() {
 }
 
 watch([() => formModel.input, () => formModel.output, fileSwitchItem], () => setFileGrid());
+
+watch(formModel, () => API.setConfig(formModel));
 
 onMounted(() => {
   API.getConfig().then((data) => assignUpdate(formModel, { ...data }));

@@ -103,7 +103,7 @@ export default {
   },
   Dashboard: {
     GenChat: "Generate Chat",
-    ChatDescription: "ChatGPT, DeepSeek, chat, knowledge, learning...",
+    ChatDescription: "ChatGPT, DeepSeek, Phi, Qwen, chat, knowledge, learning...",
     ImageSuperResolution: "Image Super Resolution",
     ImageSuperResolutionDescription: "One-click batch image super resolution...",
     ImageAutoWipe: "Image Auto Wipe",
@@ -149,8 +149,9 @@ export default {
   },
   ChatView: {
     System: "System",
-    Assistant: "Assistant",
     User: "User",
+    Think: "Think",
+    Assistant: "Assistant",
   },
   FileGrid: {
     Input: "Input file",
@@ -183,17 +184,14 @@ export default {
       Config: "Config",
       Reset: "Reset",
       Cancel: "Cancel",
+      Think: "Think",
       Send: "Send",
-      Lite: "This function module cannot be used in the Lite version",
       ModelInitWait: "Loading model, please wait...",
       ModelProcessWait: "Processing model, please wait...",
       ModelError: "Model error",
       ModelInitFailed: "Failed to load model",
-      InputPrompt: "Please enter the prompt, send shortcut key: Alt + Enter",
+      InputPrompt: "Please enter the prompt, send shortcut key: Ctrl + Enter",
       InputPromptEmpty: "Prompt is empty",
-      HistoryCountNot2: "The history record requires at least one round of conversation",
-      HistoryLast1NotAssistant: "The last entry in the history is not Assistant",
-      HistoryLast2NotUser: "The second to last entry in the history record is not User",
       HistoryUserEmpty: "The history record User is empty",
       ProcessStart: "Process start",
       ProcessExecute: "Process execute",
@@ -201,7 +199,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Generate Chat [Phi-4-mini-instruct]: ChatGPT, DeepSeek, chat, knowledge, learning...\nOperation steps: input prompt → click send → wait for the result",
+      Help: "Generate Chat [Qwen3-1.7B]: ChatGPT, DeepSeek, Phi, Qwen, chat, knowledge, learning...\nOperation steps: input prompt → click send → wait for the result",
       ConfigTitle: "Config",
       ConfigPromptSystem: "System prompt",
       ConfigPromptMaxLength: "Prompt max length",
@@ -241,7 +239,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Image Super Resolution: One-click batch image super resolution...Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Select processing scaling → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nInput sorting: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Select the processing platform (CPU/GPU)\nProcessing mode: Select the processing mode (standard) \nProcessing scaling: Select processing scaling (X2/X4/X8)",
+      Help: "Image Super Resolution: One-click batch image super resolution...Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing scaling → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nProcessing platform: Select the processing platform (CPU/GPU)\nProcessing mode: Select the processing mode (standard) \nProcessing scaling: Select processing scaling (X2/X4/X8)",
     },
     AutoWipe: {
       InputFolder: "Input folder",
@@ -268,7 +266,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Image Auto Wipe: One-click batch image automatic erasure...Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Select processing mask → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nInput sorting: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Processing running platform (CPU/GPU)\nProcessing mode: Select processing mode (standard) \nProcessing mask: Use a brush to automatically generate a mask or select a custom mask file",
+      Help: "Image Auto Wipe: One-click batch image automatic erasure...Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing mask → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nProcessing platform: Processing running platform (CPU/GPU)\nProcessing mode: Select processing mode (standard) \nProcessing mask: Use a brush to automatically generate a mask or select a custom mask file",
     },
     CartoonComic: {
       InputFolder: "Input folder",
@@ -304,7 +302,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Image Cartoon Comics: One-click batch image cartoon comics... Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Select processing quality → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nInput sorting: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Select the processing platform ( CPU/GPU)\nProcessing mode: Select the processing mode (Hayao Miyazaki/Cute/ Japanese comic face /Makoto Shinkai/Sketch)\nProcessing quality: Select the processing quality (Auto/High (1024)/Medium (512)/Low (256))",
+      Help: "Image Cartoon Comics: One-click batch image cartoon comics... Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing quality → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nProcessing platform: Select the processing platform ( CPU/GPU)\nProcessing mode: Select the processing mode (Hayao Miyazaki/Cute/ Japanese comic face /Makoto Shinkai/Sketch)\nProcessing quality: Select the processing quality (Auto/High (1024)/Medium (512)/Low (256))",
     },
     Convert3d: {
       InputFolder: "Input folder",
@@ -348,7 +346,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Image to 3D: One-click batch image conversion to 3d...Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Select processing format → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nInput sorting: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Select processing platform (CPU/GPU)\nProcessing mode: Select processing mode (standard)\nProcessing format: Select processing format (half-width left-right/full-width left-right/red-blue)",
+      Help: "Image to 3D: One-click batch image conversion to 3d...Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing format → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nProcessing platform: Select processing platform (CPU/GPU)\nProcessing mode: Select processing mode (standard)\nProcessing format: Select processing format (half-width left-right/full-width left-right/red-blue)",
     },
     ColorRestoration: {
       InputFolder: "Input folder",
@@ -379,7 +377,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Image Color Restoration: One-click batch image color restoration...Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Select processing quality → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nInput sorting: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Select the processing platform (CPU/GPU)\nProcessing mode: Select the processing mode (Standard)\nProcessing quality: Select the processing quality (High (1024)/Medium (512)/Low (256))",
+      Help: "Image Color Restoration: One-click batch image color restoration...Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing quality → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nProcessing platform: Select the processing platform (CPU/GPU)\nProcessing mode: Select the processing mode (Standard)\nProcessing quality: Select the processing quality (High (1024)/Medium (512)/Low (256))",
     },
     FrameInterpolation: {
       InputFolder: "Input folder",
@@ -410,7 +408,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Image Frame Interpolation: One-click batch frame interpolation...Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Select processing scaling → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nInput sort: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Select processing platform (CPU/GPU ) \nProcessing mode: Select processing mode (standard)\nProcessing scaling: Select processing scaling (X2/X4/X8)",
+      Help: "Image Frame Interpolation: One-click batch frame interpolation...Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing scaling → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nProcessing platform: Select processing platform (CPU/GPU ) \nProcessing mode: Select processing mode (standard)\nProcessing scaling: Select processing scaling (X2/X4/X8)",
     },
     Matting: {
       InputFolder: "Input folder",
@@ -437,7 +435,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Image Background Matting: One-click batch image background removal...Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Select processing scale → Click the start button → Wait for processing to complete\nInput directory : Select input directory location\nOutput directory: Select output directory location\nInput sorting: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Select processing platform (CPU/GPU)\nProcessing mode: Select processing mode (standard)",
+      Help: "Image Background Matting: One-click batch image background removal...Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing scale → Click the start button → Wait for processing to complete\nInput directory : Select input directory location\nOutput directory: Select output directory location\nProcessing platform: Select processing platform (CPU/GPU)\nProcessing mode: Select processing mode (standard)",
     },
     FaceRestoration: {
       InputFolder: "Input folder",
@@ -464,7 +462,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Image Face Restoration: One-click batch image face restoration...Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nInput sorting: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Select the processing platform (CPU/GPU)\nProcessing mode: Processing operation mode (standard)",
+      Help: "Image Face Restoration: One-click batch image face restoration...Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nProcessing platform: Select the processing platform (CPU/GPU)\nProcessing mode: Processing operation mode (standard)",
     },
   },
   Video: {
@@ -496,7 +494,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Image Super Resolution: One-click batch image super resolution...Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Select processing scaling → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nInput sorting: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Select the processing platform (CPU/GPU)\nProcessing mode: Select the processing mode (standard) \nProcessing scaling: Select processing scaling (X2/X4/X8)",
+      Help: "Image Super Resolution: One-click batch image super resolution...Supported file formats: (JPG/JPEG/PNG)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing scaling → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nProcessing platform: Select the processing platform (CPU/GPU)\nProcessing mode: Select the processing mode (standard) \nProcessing scaling: Select processing scaling (X2/X4/X8)",
     },
     AutoWipe: {
       InputFolder: "Input folder",
@@ -523,7 +521,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Video Auto Wipe: One-click batch video automatic erasure...Supported file formats: (MP4/MKV)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Select processing mask → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nInput sorting: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Processing running platform (CPU/GPU)\nProcessing mode: Select processing mode (standard) \nProcessing mask: Use a brush to automatically generate a mask or select a custom mask file",
+      Help: "Video Auto Wipe: One-click batch video automatic erasure...Supported file formats: (MP4/MKV)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing mask → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nProcessing platform: Processing running platform (CPU/GPU)\nProcessing mode: Select processing mode (standard) \nProcessing mask: Use a brush to automatically generate a mask or select a custom mask file",
     },
     CartoonComic: {
       InputFolder: "Input folder",
@@ -559,7 +557,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Video Cartoon Comics: One-click batch video cartoon comics... Supported file formats: (MP4/MKV)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Select processing quality → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nInput sorting: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Select the processing platform ( CPU/GPU)\nProcessing mode: Select the processing mode (Hayao Miyazaki/Cute/ Japanese comic face /Makoto Shinkai/Sketch)\nProcessing quality: Select the processing quality (Auto/High (1024)/Medium (512)/Low (256))",
+      Help: "Video Cartoon Comics: One-click batch video cartoon comics... Supported file formats: (MP4/MKV)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing quality → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nProcessing platform: Select the processing platform ( CPU/GPU)\nProcessing mode: Select the processing mode (Hayao Miyazaki/Cute/ Japanese comic face /Makoto Shinkai/Sketch)\nProcessing quality: Select the processing quality (Auto/High (1024)/Medium (512)/Low (256))",
     },
     Convert3d: {
       InputFolder: "Input folder",
@@ -603,7 +601,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Video to 3D: One-click batch video conversion to 3d...Supported file formats: (MP4/MKV)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Select processing format → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nInput sorting: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Select processing platform (CPU/GPU)\nProcessing mode: Select processing mode (standard)\nProcessing format: Select processing format (half-width left-right/full-width left-right/red-blue)",
+      Help: "Video to 3D: One-click batch video conversion to 3d...Supported file formats: (MP4/MKV)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing format → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nProcessing platform: Select processing platform (CPU/GPU)\nProcessing mode: Select processing mode (standard)\nProcessing format: Select processing format (half-width left-right/full-width left-right/red-blue)",
     },
     ColorRestoration: {
       InputFolder: "Input folder",
@@ -634,7 +632,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Video Color Restoration: One-click batch video color restoration...Supported file formats: (MP4/MKV)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Select processing quality → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nInput sorting: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Select the processing platform (CPU/GPU)\nProcessing mode: Select the processing mode (Standard)\nProcessing quality: Select the processing quality (High (1024)/Medium (512)/Low (256))",
+      Help: "Video Color Restoration: One-click batch video color restoration...Supported file formats: (MP4/MKV)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing quality → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nProcessing platform: Select the processing platform (CPU/GPU)\nProcessing mode: Select the processing mode (Standard)\nProcessing quality: Select the processing quality (High (1024)/Medium (512)/Low (256))",
     },
     FrameInterpolation: {
       InputFolder: "Input folder",
@@ -665,7 +663,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Video Frame Interpolation: One-click batch video frame interpolation...Supported file formats: (MP4/MKV)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Select processing scaling → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nInput sort: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Select processing platform (CPU/GPU ) \nProcessing mode: Select processing mode (standard)\nProcessing scaling: Select processing scaling (X2/X4/X8)",
+      Help: "Video Frame Interpolation: One-click batch video frame interpolation...Supported file formats: (MP4/MKV)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing scaling → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nProcessing platform: Select processing platform (CPU/GPU ) \nProcessing mode: Select processing mode (standard)\nProcessing scaling: Select processing scaling (X2/X4/X8)",
     },
     Matting: {
       InputFolder: "Input folder",
@@ -692,7 +690,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Video Background Matting: One-click batch video background removal...Supported file formats: (MP4/MKV)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Select processing scale → Click the start button → Wait for processing to complete\nInput directory : Select input directory location\nOutput directory: Select output directory location\nInput sorting: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Select processing platform (CPU/GPU)\nProcessing mode: Select processing mode (standard)",
+      Help: "Video Background Matting: One-click batch video background removal...Supported file formats: (MP4/MKV)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing scale → Click the start button → Wait for processing to complete\nInput directory : Select input directory location\nOutput directory: Select output directory location\nProcessing platform: Select processing platform (CPU/GPU)\nProcessing mode: Select processing mode (standard)",
     },
     Organization: {
       InputFolder: "Input folder",
@@ -719,7 +717,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Video Organization: One-click batch video organization: decryption, merging, organization... Supported clients: (Windows/Android)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select program type → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nInput sorting: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProgram type: Select the program type ( Bilibili Windows / Bilibili Android )",
+      Help: "Video Organization: One-click batch video organization: decryption, merging, organization... Supported clients: (Windows/Android)\nOperation steps: Select input directory → Select output directory → Select program type → Click the start button → Wait for processing to complete\nInput directory: Select the input directory location\nOutput directory: Select the output directory location\nProgram type: Select the program type ( Bilibili Windows / Bilibili Android )",
     },
   },
   Audio: {
@@ -748,7 +746,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Audio Vocal Split: One-click batch audio vocal separation, a cappella, accompaniment... Supported file formats: (WAV/MP3)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Select processing scale → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nInput sort: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Select processing platform (CPU/GPU)\nProcessing mode : Select processing mode (standard)",
+      Help: "Audio Vocal Split: One-click batch audio vocal separation, a cappella, accompaniment... Supported file formats: (WAV/MP3)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing scale → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nProcessing platform: Select processing platform (CPU/GPU)\nProcessing mode : Select processing mode (standard)",
     },
     Denoise: {
       InputFolder: "Input folder",
@@ -775,7 +773,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Audio Denoise: One-click batch audio noise removal...Supported file formats: (WAV/MP3)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Select processing scale → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nInput sorting: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Select processing platform (CPU/GPU)\nProcessing mode: Select processing mode ( standard )",
+      Help: "Audio Denoise: One-click batch audio noise removal...Supported file formats: (WAV/MP3)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing scale → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nProcessing platform: Select processing platform (CPU/GPU)\nProcessing mode: Select processing mode ( standard )",
     },
     TTS: {
       InputFolder: "Input folder",
@@ -906,7 +904,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Text to Speech: Generate speech from text, clone timbre, emotion...Supported file formats: (TXT) -> (WAV)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Select processing scale → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nInput sorting: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Select processing platform (CPU/GPU)\nProcessing mode: Select processing mode (standard )",
+      Help: "Text to Speech: Generate speech from text, clone timbre, emotion...Supported file formats: (TXT) -> (WAV)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing scale → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nProcessing platform: Select processing platform (CPU/GPU)\nProcessing mode: Select processing mode (standard )",
     },
     STT: {
       InputFolder: "Input folder",
@@ -941,7 +939,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Speech to Text: Speech to text, multi-language recognition...Supported file formats: (WAV/MP3) -> (TXT)\nOperation steps: Select input directory → Select output directory → Select input sort → Select sorting rule → Select processing platform → Select processing mode → Select processing scale → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nInput sorting: Select the sorting field for files entering the processing queue (name/modification date/size)\nSorting rule: Select the sorting rule for files entering the processing queue (ascending/descending)\nProcessing platform: Select processing platform (CPU/GPU)\nProcessing mode: Select processing mode (standard)",
+      Help: "Speech to Text: Speech to text, multi-language recognition...Supported file formats: (WAV/MP3) -> (TXT)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing scale → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nProcessing platform: Select processing platform (CPU/GPU)\nProcessing mode: Select processing mode (standard)",
     },
   },
 };

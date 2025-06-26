@@ -38,7 +38,7 @@
 import { assignUpdate } from "@/utils";
 import API from "@/api/gen/chat.api";
 
-interface formType {
+export interface formType {
   prompt_system: string;
   prompt_max_length: number;
   context_max_length: number;
