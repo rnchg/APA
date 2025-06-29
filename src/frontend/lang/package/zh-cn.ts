@@ -198,7 +198,7 @@ export default {
       ProcessEnd: "处理进度结束",
       ProcessError: "处理进度错误",
       ProcessAuthError: "处理进度授权错误",
-      Help: "生成对话 [Qwen3-1.7B] ：ChatGPT、DeepSeek、Phi、Qwen、聊天、知识、学习…\n操作步骤：输入提示→点击发送→等待结果",
+      Help: "生成对话 [ Qwen3-1.7B ] ：ChatGPT、DeepSeek、Phi、Qwen、聊天、知识、学习…\n操作步骤：输入提示→点击发送→等待结果",
       ConfigTitle: "配置",
       ConfigPromptSystem: "系统提示词",
       ConfigPromptMaxLength: "提示词处理最大长度",

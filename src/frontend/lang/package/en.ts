@@ -199,7 +199,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Generate Chat [Qwen3-1.7B]: ChatGPT, DeepSeek, Phi, Qwen, chat, knowledge, learning...\nOperation steps: input prompt → click send → wait for the result",
+      Help: "Generate Chat [ Qwen3-1.7B ]: ChatGPT, DeepSeek, Phi, Qwen, chat, knowledge, learning...\nOperation steps: input prompt → click send → wait for the result",
       ConfigTitle: "Config",
       ConfigPromptSystem: "System prompt",
       ConfigPromptMaxLength: "Prompt max length",
@@ -773,7 +773,7 @@ export default {
       ProcessEnd: "Process end",
       ProcessError: "Process error",
       ProcessAuthError: "Process auth error",
-      Help: "Audio Denoise: One-click batch audio noise removal...Supported file formats: (WAV/MP3)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing scale → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nProcessing platform: Select processing platform (CPU/GPU)\nProcessing mode: Select processing mode ( standard )",
+      Help: "Audio Denoise: One-click batch audio noise removal...Supported file formats: (WAV/MP3)\nOperation steps: Select input directory → Select output directory → Select processing platform → Select processing mode → Select processing scale → Click the start button → Wait for processing to complete\nInput directory: Select input directory location\nOutput directory: Select output directory location\nProcessing platform: Select processing platform (CPU/GPU)\nProcessing mode: Select processing mode (standard)",
     },
     TTS: {
       InputFolder: "Input folder",
