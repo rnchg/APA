@@ -12,6 +12,5 @@ export * from "./modules/app.store";
 export * from "./modules/permission.store";
 export * from "./modules/settings.store";
 export * from "./modules/tags-view.store";
-
 export * from "./modules/core.store";
 export { store };

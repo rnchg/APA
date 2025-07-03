@@ -22,30 +22,36 @@
         />
       </el-row>
       <el-row>
-        <el-col :span="10">
+        <el-col :span="12">
           <el-button type="default" round>{{ t("Gen.Chat.Image") }}</el-button>
           <el-button type="default" round>{{ t("Gen.Chat.Video") }}</el-button>
           <el-button type="default" round>{{ t("Gen.Chat.Audio") }}</el-button>
         </el-col>
-        <el-col :span="10" class="text-right">
-          <el-button type="success" round @click="handleConfig">
-            {{ t("Gen.Chat.Config") }}
-          </el-button>
-          <el-button type="warning" round @click="handleReset">{{ t("Gen.Chat.Reset") }}</el-button>
-          <el-button type="danger" round @click="handleCancel">
-            {{ t("Gen.Chat.Cancel") }}
-          </el-button>
-          <el-button type="primary" round :disabled="sendDisabled" @click="handleSend">
-            {{ t("Gen.Chat.Send") }}
-          </el-button>
-        </el-col>
-        <el-col :span="4" class="text-right">
-          <el-checkbox
-            v-model="think"
-            :label="t('Gen.Chat.Think')"
-            :disabled="sendDisabled"
-            border
-          />
+        <el-col :span="12" class="text-right">
+          <el-space>
+            <div>
+              <el-button type="success" round @click="handleConfig">
+                {{ t("Gen.Chat.Config") }}
+              </el-button>
+              <el-button type="warning" round @click="handleReset">
+                {{ t("Gen.Chat.Reset") }}
+              </el-button>
+              <el-button type="danger" round @click="handleCancel">
+                {{ t("Gen.Chat.Cancel") }}
+              </el-button>
+              <el-button type="primary" round :disabled="sendDisabled" @click="handleSend">
+                {{ t("Gen.Chat.Send") }}
+              </el-button>
+            </div>
+            <div>
+              <el-checkbox
+                v-model="think"
+                :label="t('Gen.Chat.Think')"
+                :disabled="sendDisabled"
+                border
+              />
+            </div>
+          </el-space>
         </el-col>
       </el-row>
     </el-card>
