@@ -22,12 +22,12 @@ class ChatController(BaseController):
     def setup_routes(self):
 
         @self.base_server.route(f"{self.base_url}/getConfig", methods=["POST"])
-        def audio_chat_getConfig():
+        def gen_chat_getConfig():
             data = Current.config.gen_chat.to_dict()
             return self.ok(data)
 
         @self.base_server.route(f"{self.base_url}/setConfig", methods=["POST"])
-        def audio_chat_setConfig():
+        def gen_chat_setConfig():
             data = request.json["data"]
             Current.config.gen_chat.dict_to(data)
             return self.ok()
@@ -74,11 +74,14 @@ class ChatController(BaseController):
             self.base_service.progress = 0
             self.base_service.message = ""
             self.base_service.token = ""
-            prompt = data["prompt"]
-            if not prompt:
+            prompts = data["prompts"]
+            if not prompts:
                 raise Exception("Gen.Chat.InputPromptEmpty")
             think = data["think"] or False
-            yield from self.base_service.start(prompt, think)
+            provider = data["provider"]
+            if provider is None:
+                raise Exception(f"Gen.Chat.ParamError: provider: {provider}")
+            yield from self.base_service.start(prompts, think, provider)
             self.base_service.is_stop = True
         except ActivationException:
             self.base_service.is_auth = False

@@ -23,13 +23,21 @@
       </el-row>
       <el-row>
         <el-col :span="12">
-          <el-button type="default" round>{{ t("Gen.Chat.Image") }}</el-button>
-          <el-button type="default" round>{{ t("Gen.Chat.Video") }}</el-button>
-          <el-button type="default" round>{{ t("Gen.Chat.Audio") }}</el-button>
+          <el-select v-model="formModel.provider" style="width: 500px">
+            <el-option
+              v-for="item in providerOptions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
+          </el-select>
         </el-col>
         <el-col :span="12" class="text-right">
           <el-space>
             <div>
+              <el-button type="default" round>{{ t("Gen.Chat.Image") }}</el-button>
+              <el-button type="default" round>{{ t("Gen.Chat.Video") }}</el-button>
+              <el-button type="default" round>{{ t("Gen.Chat.Audio") }}</el-button>
               <el-button type="success" round @click="handleConfig">
                 {{ t("Gen.Chat.Config") }}
               </el-button>
@@ -45,10 +53,9 @@
             </div>
             <div>
               <el-checkbox
-                v-model="think"
+                v-model="formModel.think"
                 :label="t('Gen.Chat.Think')"
                 :disabled="sendDisabled"
-                border
               />
             </div>
           </el-space>
@@ -64,9 +71,12 @@ import LicenseOrder from "@/views/License/Order.vue";
 import ChatView, { Message } from "@/views/Component/ChatView.vue";
 import Config from "@/views/Gen/Chat/Config.vue";
 import { assignUpdate } from "@/utils";
+import { useCoreStore } from "@/store";
 import API from "@/api/gen/chat.api";
 
 interface formType {
+  provider: string;
+  think: boolean;
   prompt_system: string;
   prompt_max_length: number;
   context_max_length: number;
@@ -79,18 +89,22 @@ defineOptions({
 
 const { t } = useI18n();
 
+const coreStore = useCoreStore();
+
 const licenseOrderVisible = ref(false);
+
+const providerOptions = coreStore.providers;
 
 const modelLoading = ref(false);
 const modelLoadingText = ref(t("Gen.Chat.ModelInitWait"));
 
 const formModel = reactive<formType>({
+  provider: "",
+  think: false,
   prompt_system: "",
   prompt_max_length: 0,
   context_max_length: 0,
 });
-
-const think = ref(false);
 
 const prompt = ref("");
 
@@ -167,15 +181,16 @@ function handleSend() {
     ElMessage.error(t("Gen.Chat.InputPromptEmpty"));
     return;
   }
-  const [promptList, thinkMessage, assistantMessage] = chatViewRef.value.sendAndBuildMessage(
+  const [prompts, thinkMessage, assistantMessage] = chatViewRef.value.sendAndBuildMessage(
     prompt.value,
-    think.value
+    formModel.think
   );
   handleBegin();
   API.start(
     {
-      prompt: promptList,
-      think: think.value,
+      prompts: prompts.map((e: Message) => ({ role: e.type, content: e.text })),
+      think: formModel.think,
+      provider: formModel.provider,
     },
     function (msg: any) {
       const data = JSON.parse(msg.data);
@@ -190,7 +205,12 @@ function handleSend() {
         ElMessage.error(data.message.text);
       }
       if (data.token) {
-        chatViewRef.value.addToken(data.token, think.value, thinkMessage, assistantMessage);
+        chatViewRef.value.receiveMessage(
+          data.token,
+          formModel.think,
+          thinkMessage,
+          assistantMessage
+        );
       }
     },
     function (err: any) {
@@ -222,10 +242,16 @@ function handleConfigSave() {
 
 watch([prompt], () => handlePromptLength());
 
+watch(formModel, () => API.setConfig(formModel));
+
 onMounted(() => {
-  chatViewRef.value.addMessage({ type: "System", text: t("Gen.Chat.Help") });
-  promptInfo.value = t("Gen.Chat.InputPrompt");
   handleInitConfig();
   handleInitModel();
+  chatViewRef.value.addMessage({ type: "System", text: t("Gen.Chat.Help") });
+  promptInfo.value = t("Gen.Chat.InputPrompt");
+});
+
+onUnmounted(() => {
+  API.setConfig(formModel);
 });
 </script>

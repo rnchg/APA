@@ -1,7 +1,7 @@
 | English | [中文](README.zh-CN.md) |
 
 # AI Productivity Assistant
-Free and open source, improve user productivity, and protect privacy and data security. Provide efficient and convenient AI solutions, including but not limited to: built-in local exclusive ChatGPT, DeepSeek, Phi, one-click batch intelligent processing of images, videos, audio, etc.
+Free and open source, improve user productivity, protect privacy and data security. Provide efficient and convenient AI solutions, including but not limited to: built-in local exclusive ChatGPT, DeepSeek, Phi, Qwen and other models, one-click batch intelligent processing of pictures, videos, audio, etc.
 
 ## Main features
 - **Free and open source**: free to use, open source code, users can check and modify it by themselves.
@@ -11,7 +11,7 @@ Free and open source, improve user productivity, and protect privacy and data se
 - **Multi-language support**: support multi-language internationalization to meet the needs of global users.
 
 ### Generate Chat
-- **Generate Chat**: provide local offline running ChatGPT, DeepSeek and other models, enjoy the intelligent AI dialogue experience anytime, anywhere.
+- **Generate Chat**: Provides local offline models such as ChatGPT, DeepSeek, Phi, Qwen, etc., allowing you to enjoy the intelligent AI conversation experience anytime and anywhere.
 
 ### Image processing
 - **Image Super Resolution**: improve image resolution to ensure lossless image quality.
