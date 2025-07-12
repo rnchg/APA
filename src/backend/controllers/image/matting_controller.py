@@ -13,7 +13,7 @@ from core.exceptions.activation_exception import ActivationException
 
 from controllers.base.base_controller import BaseController
 
-from core.services.image.matting_service import MattingService
+from core.services.image.matting.index_service import IndexService as MattingService
 
 
 class MattingController(BaseController):

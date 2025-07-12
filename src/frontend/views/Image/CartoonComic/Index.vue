@@ -205,9 +205,9 @@ function setFileGrid() {
 
 function handlefileGridTable(val: FileTable | undefined) {
   if (val) {
-    API.getFileUrl(val.path).then((data) => (fileViewRef.value.imageRef.src = data.url));
+    API.getFileUrl(val.path).then((data) => fileViewRef.value.setImageSrc(data.url));
   } else {
-    fileViewRef.value.imageRef.src = "";
+    fileViewRef.value.setImageSrc("");
   }
 }
 

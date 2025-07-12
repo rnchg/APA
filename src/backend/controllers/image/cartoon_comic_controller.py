@@ -13,7 +13,7 @@ from core.exceptions.activation_exception import ActivationException
 
 from controllers.base.base_controller import BaseController
 
-from core.services.image.cartoon_comic_service import CartoonComicService
+from core.services.image.cartoon_comic.index_service import IndexService as CartoonComicService
 
 
 class CartoonComicController(BaseController):

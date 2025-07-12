@@ -13,7 +13,7 @@ from core.exceptions.activation_exception import ActivationException
 
 from controllers.base.base_controller import BaseController
 
-from core.services.video.super_resolution_service import SuperResolutionService
+from core.services.video.super_resolution.index_service import IndexService as SuperResolutionService
 
 
 class SuperResolutionController(BaseController):

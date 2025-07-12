@@ -887,6 +887,7 @@ export default {
       VoiceZm097: "中文男声 097",
       VoiceZm098: "中文男声 098",
       VoiceZm100: "中文男声 100",
+      Speed: "速度",
       Progress: "处理进度",
       Start: "开始",
       Stop: "停止",

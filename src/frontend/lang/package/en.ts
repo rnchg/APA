@@ -888,6 +888,7 @@ export default {
       VoiceZm097: "Chinese male 097",
       VoiceZm098: "Chinese male 098",
       VoiceZm100: "Chinese male 100",
+      Speed: "Speed",
       Progress: "Progress",
       Start: "Start",
       Stop: "Stop",

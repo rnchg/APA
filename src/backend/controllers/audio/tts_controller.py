@@ -13,7 +13,7 @@ from core.exceptions.activation_exception import ActivationException
 
 from controllers.base.base_controller import BaseController
 
-from core.services.audio.tts_service import TTSService
+from core.services.audio.tts.index_service import IndexService as TTSService
 
 
 class TTSController(BaseController):
@@ -111,7 +111,10 @@ class TTSController(BaseController):
             voice = data["voice"]
             if voice is None:
                 raise Exception(f"Audio.TTS.ParamError: voice: {voice}")
-            yield from self.base_service.start(input, output, input_files, provider, mode, voice)
+            speed = data["speed"]
+            if speed is None:
+                raise Exception(f"Audio.TTS.ParamError: speed: {speed}")
+            yield from self.base_service.start(input, output, input_files, provider, mode, voice, speed)
             self.base_service.is_stop = True
             self.base_service.message = {"type": "success", "text": "Audio.TTS.ProcessEnd"}
         except ActivationException:

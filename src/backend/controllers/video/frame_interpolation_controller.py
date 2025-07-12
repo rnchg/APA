@@ -13,7 +13,7 @@ from core.exceptions.activation_exception import ActivationException
 
 from controllers.base.base_controller import BaseController
 
-from core.services.video.frame_interpolation_service import FrameInterpolationService
+from core.services.video.frame_interpolation.index_service import IndexService as FrameInterpolationService
 
 
 class FrameInterpolationController(BaseController):

@@ -13,7 +13,7 @@ from core.exceptions.activation_exception import ActivationException
 
 from controllers.base.base_controller import BaseController
 
-from core.services.image.face_restoration_service import FaceRestorationService
+from core.services.image.face_restoration.index_service import IndexService as FaceRestorationService
 
 
 class FaceRestorationController(BaseController):

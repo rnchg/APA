@@ -13,7 +13,7 @@ from core.exceptions.activation_exception import ActivationException
 
 from controllers.base.base_controller import BaseController
 
-from core.services.audio.denoise_service import DenoiseService
+from core.services.audio.denoise.index_service import IndexService as DenoiseService
 
 
 class DenoiseController(BaseController):
@@ -26,7 +26,7 @@ class DenoiseController(BaseController):
         self.base_url = f"{self.base_api}/audio/denoise"
 
     def setup_routes(self):
-        
+
         @self.base_server.route(f"{self.base_url}/getConfig", methods=["POST"])
         def audio_denoise_getConfig():
             data = Current.config.audio_denoise.to_dict()

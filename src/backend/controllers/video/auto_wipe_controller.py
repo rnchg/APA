@@ -14,7 +14,7 @@ from core.exceptions.activation_exception import ActivationException
 
 from controllers.base.base_controller import BaseController
 
-from core.services.video.auto_wipe_service import AutoWipeService
+from core.services.video.auto_wipe.index_service import IndexService as AutoWipeService
 
 
 class AutoWipeController(BaseController):

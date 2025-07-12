@@ -13,7 +13,7 @@ from core.exceptions.activation_exception import ActivationException
 
 from controllers.base.base_controller import BaseController
 
-from core.services.audio.vocal_split_service import VocalSplitService
+from core.services.audio.vocal_split.index_service import IndexService as VocalSplitService
 
 
 class VocalSplitController(BaseController):
