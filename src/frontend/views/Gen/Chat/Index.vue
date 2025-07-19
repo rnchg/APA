@@ -1,7 +1,7 @@
 <template>
   <div v-loading="modelLoading" class="app-container" :element-loading-text="modelLoadingText">
     <el-card class="mb-2">
-      <ChatView ref="chatViewRef" v-model:chat-message-data="chatMessageData" />
+      <ChatView ref="chatViewRef" v-model:chat-list="chatList" />
     </el-card>
     <el-card>
       <el-row>
@@ -68,10 +68,11 @@
 </template>
 <script setup lang="ts">
 import LicenseOrder from "@/views/License/Order.vue";
-import ChatView, { Message } from "@/views/Component/ChatView.vue";
+import ChatView, { Model } from "@/views/Component/ChatView.vue";
 import Config from "@/views/Gen/Chat/Config.vue";
 import { assignUpdate } from "@/utils";
 import { useCoreStore } from "@/store";
+import { ChatTypeEnum } from "@/enums/const/view.enum";
 import API from "@/api/gen/chat.api";
 
 interface formType {
@@ -115,7 +116,7 @@ const sendDisabled = ref(false);
 
 const chatViewRef = ref();
 
-const chatMessageData = ref<Message[]>([]);
+const chatList = ref<Model[]>([]);
 
 const configVisible = ref(false);
 
@@ -181,14 +182,14 @@ function handleSend() {
     ElMessage.error(t("Gen.Chat.InputPromptEmpty"));
     return;
   }
-  const [prompts, thinkMessage, assistantMessage] = chatViewRef.value.sendAndBuildMessage(
+  const [prompts, chatThink, chatAssistant] = chatViewRef.value.sendAndBuildChat(
     prompt.value,
     formModel.think
   );
   handleBegin();
   API.start(
     {
-      prompts: prompts.map((e: Message) => ({ role: e.type, content: e.text })),
+      prompts: prompts.map((e: Model) => ({ role: e.type, content: e.text })),
       think: formModel.think,
       provider: formModel.provider,
     },
@@ -205,12 +206,7 @@ function handleSend() {
         ElMessage.error(data.message.text);
       }
       if (data.token) {
-        chatViewRef.value.receiveMessage(
-          data.token,
-          formModel.think,
-          thinkMessage,
-          assistantMessage
-        );
+        chatViewRef.value.receiveChat(data.token, formModel.think, chatThink, chatAssistant);
       }
     },
     function (err: any) {
@@ -222,13 +218,13 @@ function handleSend() {
 
 function handleCancel() {
   API.stop().then(() => {
-    chatViewRef.value.cancelMessage();
+    chatViewRef.value.cancelChat();
   });
 }
 
 function handleReset() {
   API.stop().then(() => {
-    chatViewRef.value.resetMessage();
+    chatViewRef.value.resetChat();
   });
 }
 
@@ -247,7 +243,7 @@ watch(formModel, () => API.setConfig(formModel));
 onMounted(() => {
   handleInitConfig();
   handleInitModel();
-  chatViewRef.value.addMessage({ type: "System", text: t("Gen.Chat.Help") });
+  chatViewRef.value.addChat({ type: ChatTypeEnum.System, text: t("Gen.Chat.Help") });
   promptInfo.value = t("Gen.Chat.InputPrompt");
 });
 

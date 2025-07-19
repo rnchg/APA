@@ -8,7 +8,7 @@ class HomeController(BaseController):
         self.base_url = f"{self.base_api}/home"
 
     def setup_routes(self):
-
+        
         @self.base_server.route(f"{self.base_url}/getRoutes", methods=["GET"])
         def home_getRoutes():
             data = [

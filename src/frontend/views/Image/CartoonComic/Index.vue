@@ -5,7 +5,7 @@
         <el-form-item :label="t('Image.CartoonComic.InputFolder')" prop="input">
           <el-input v-model="formModel.input" :placeholder="t('Image.CartoonComic.InputFolder')">
             <template #append>
-              <el-button @click="handleInput">
+              <el-button type="primary" @click="handleInput">
                 {{ t("Image.CartoonComic.InputSelect") }}
               </el-button>
             </template>
@@ -14,7 +14,7 @@
         <el-form-item :label="t('Image.CartoonComic.OutputFolder')" prop="output">
           <el-input v-model="formModel.output" :placeholder="t('Image.CartoonComic.OutputFolder')">
             <template #append>
-              <el-button @click="handleOutput">
+              <el-button type="primary" @click="handleOutput">
                 {{ t("Image.CartoonComic.OutputSelect") }}
               </el-button>
             </template>
@@ -71,9 +71,9 @@
         <el-card class="mb-2">
           <FileGrid
             ref="fileGridRef"
-            v-model:file-switch-item="fileSwitchItem"
-            v-model:file-table-row="fileTableRow"
-            :file-table-data="fileTableData"
+            v-model:switch-item="fileGridSwitchItem"
+            v-model:table-item="fileGridTableItem"
+            :table-list="fileGridTableList"
             @table-change="handlefileGridTable"
           />
         </el-card>
@@ -85,7 +85,7 @@
       </el-col>
       <el-col :sm="6">
         <el-card>
-          <FileMessage ref="fileMessageRef" v-model:file-message-data="fileMessageData" />
+          <FileMessage ref="fileMessageRef" v-model:message-list="fileMessageList" />
         </el-card>
       </el-col>
     </el-row>
@@ -95,10 +95,11 @@
 <script setup lang="ts">
 import { assignUpdate } from "@/utils";
 import { useCoreStore } from "@/store";
+import { FileSwitchEnum, MessageTypeEnum } from "@/enums/const/view.enum";
 import LicenseOrder from "@/views/License/Order.vue";
 import FileGrid, { FileTable } from "@/views/Component/FileGrid.vue";
 import FileView from "@/views/Component/FileView.vue";
-import FileMessage, { Message } from "@/views/Component/FileMessage.vue";
+import FileMessage, { Model } from "@/views/Component/FileMessage.vue";
 import API from "@/api/image/cartoonComic.api";
 
 interface formType {
@@ -152,14 +153,14 @@ const startLoading = ref(false);
 const stopDisabled = ref(true);
 
 const fileGridRef = ref();
-const fileSwitchItem = ref("input");
-const fileTableData = ref<FileTable[]>([]);
-const fileTableRow = ref<FileTable>();
+const fileGridSwitchItem = ref(FileSwitchEnum.Input);
+const fileGridTableList = ref<FileTable[]>([]);
+const fileGridTableItem = ref<FileTable>();
 
 const fileViewRef = ref();
 
 const fileMessageRef = ref();
-const fileMessageData = ref<Message[]>([]);
+const fileMessageList = ref<Model[]>([]);
 
 function handleInput() {
   API.getFolder(formModel.input).then((data) => {
@@ -175,31 +176,31 @@ function handleOutput() {
 
 function setFileGrid() {
   let folder = undefined;
-  if (formModel.input && fileSwitchItem.value === "input") {
+  if (formModel.input && fileGridSwitchItem.value === FileSwitchEnum.Input) {
     folder = formModel.input;
   }
-  if (formModel.output && fileSwitchItem.value === "output") {
+  if (formModel.output && fileGridSwitchItem.value === FileSwitchEnum.Output) {
     folder = formModel.output;
   }
   if (folder === undefined) {
-    fileTableData.value = [];
+    fileGridTableList.value = [];
     return;
   }
-  API.getFileGrid(folder, fileSwitchItem.value).then((data) => {
+  API.getFileGrid(folder, fileGridSwitchItem.value).then((data) => {
     if (data.files === undefined || data.files.length === 0) {
-      fileTableData.value = [];
+      fileGridTableList.value = [];
       return;
     }
-    fileTableData.value = data.files;
-    const prevFile = fileTableRow.value?.basename;
+    fileGridTableList.value = data.files;
+    const prevFile = fileGridTableItem.value?.basename;
     if (prevFile) {
-      const currFile = fileTableData.value.find((e) => e.basename === prevFile);
+      const currFile = fileGridTableList.value.find((e) => e.basename === prevFile);
       if (currFile) {
-        fileGridRef.value.fileTableRef.setCurrentRow(currFile);
+        fileGridRef.value.tableRef.setCurrentRow(currFile);
         return;
       }
     }
-    fileGridRef.value.fileTableRef.setCurrentRow(fileTableData.value[0]);
+    fileGridRef.value.tableRef.setCurrentRow(fileGridTableList.value[0]);
   });
 }
 
@@ -224,7 +225,7 @@ function handleEnd() {
 }
 
 function handleStart() {
-  formModel.input_files = fileTableData.value.map((e) => e.path);
+  formModel.input_files = fileGridTableList.value.map((e) => e.path);
   handleBegin();
   API.start(
     formModel,
@@ -257,13 +258,16 @@ function handleOpen() {
   API.open(formModel.output);
 }
 
-watch([() => formModel.input, () => formModel.output, fileSwitchItem], () => setFileGrid());
+watch([() => formModel.input, () => formModel.output, fileGridSwitchItem], () => setFileGrid());
 
 watch(formModel, () => API.setConfig(formModel));
 
 onMounted(() => {
   API.getConfig().then((data) => assignUpdate(formModel, { ...data }));
-  fileMessageRef.value.addMessage({ type: "info", text: t("Image.CartoonComic.Help") });
+  fileMessageRef.value.addMessage({
+    type: MessageTypeEnum.Info,
+    text: t("Image.CartoonComic.Help"),
+  });
 });
 
 onUnmounted(() => {
