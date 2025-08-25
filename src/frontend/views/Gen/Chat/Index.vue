@@ -73,7 +73,7 @@ import Config from "@/views/Gen/Chat/Config.vue";
 import { assignUpdate } from "@/utils";
 import { useCoreStore } from "@/store";
 import { ChatTypeEnum } from "@/enums/const/view.enum";
-import API from "@/api/gen/chat.api";
+import API from "@/api/gen/chat-api";
 
 interface formType {
   provider: string;

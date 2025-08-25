@@ -93,7 +93,7 @@ import LicenseOrder from "@/views/License/Order.vue";
 import FileGrid, { FileTable } from "@/views/Component/FileGrid.vue";
 import FileView from "@/views/Component/FileView.vue";
 import FileMessage, { Model } from "@/views/Component/FileMessage.vue";
-import API from "@/api/image/faceRestoration.api";
+import API from "@/api/image/faceRestoration-api";
 
 interface formType {
   input: string;

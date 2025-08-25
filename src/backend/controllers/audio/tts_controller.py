@@ -6,6 +6,7 @@ from flask import request, Response, send_file
 from urllib.parse import quote_plus, unquote_plus
 
 from core.consts.app_const import AppConst
+from core.consts.audio_const import AudioConst
 from core.utility.current import Current
 from core.helpers.file_helper import FileHelper
 
@@ -87,6 +88,39 @@ class TTSController(BaseController):
             os.startfile(path)
             return self.ok()
 
+        @self.base_server.route(f"{self.base_url}/voiceUrl", methods=["POST"])
+        def audio_tts_voiceUrl():
+            file = request.json["file"]
+            return self.ok({"url": f"{request.url.replace("voiceUrl", "voiceView")}?file={quote_plus(os.path.abspath(file))}"})
+
+        @self.base_server.route(f"{self.base_url}/voiceView", methods=["GET"])
+        def audio_tts_voiceView():
+            file = request.args["file"]
+            return send_file(unquote_plus(file))
+
+        @self.base_server.route(f"{self.base_url}/voiceUpdate", methods=["POST"])
+        def audio_tts_voiceUpdate():
+            dirs = FileHelper.get_dirs(AudioConst.TTS.model_ref_dir)
+            list = []
+            for i in range(len(dirs)):
+                dir = dirs[i]
+                wav = f"{dir}/index.wav"
+                if not os.path.exists(wav):
+                    continue
+                txt = f"{dir}/index.txt"
+                if not os.path.exists(txt):
+                    continue
+                list.append({"id": i, "ref": os.path.basename(dir), "wav": wav, "txt": txt})
+            return self.ok({"list": list})
+
+        @self.base_server.route(f"{self.base_url}/voiceConfig", methods=["POST"])
+        def audio_tts_voiceConfig():
+            path = os.path.abspath(AudioConst.TTS.model_ref_dir)
+            if not os.path.exists(path):
+                return self.badRequest(message=f"Audio.TTS.OpenError: path: {path}")
+            os.startfile(path)
+            return self.ok()
+
     def start(self, data):
         try:
             self.base_service.is_auth = True
@@ -111,10 +145,16 @@ class TTSController(BaseController):
             voice = data["voice"]
             if voice is None:
                 raise Exception(f"Audio.TTS.ParamError: voice: {voice}")
+            wav = voice["wav"]
+            if not os.path.exists(wav):
+                raise Exception(f"Audio.TTS.ParamError: wav: {wav}")
+            txt = voice["txt"]
+            if not os.path.exists(txt):
+                raise Exception(f"Audio.TTS.ParamError: txt: {txt}")
             speed = data["speed"]
             if speed is None:
                 raise Exception(f"Audio.TTS.ParamError: speed: {speed}")
-            yield from self.base_service.start(input, output, input_files, provider, mode, voice, speed)
+            yield from self.base_service.start(input, output, input_files, provider, mode, speed, wav, txt)
             self.base_service.is_stop = True
             self.base_service.message = {"type": "success", "text": "Audio.TTS.ProcessEnd"}
         except ActivationException:

@@ -36,7 +36,7 @@
 
 <script lang="ts" setup>
 import { assignUpdate } from "@/utils";
-import API from "@/api/gen/chat.api";
+import API from "@/api/gen/chat-api";
 
 export interface formType {
   prompt_system: string;

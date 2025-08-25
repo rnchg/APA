@@ -100,7 +100,7 @@ import LicenseOrder from "@/views/License/Order.vue";
 import FileGrid, { FileTable } from "@/views/Component/FileGrid.vue";
 import FileView from "@/views/Component/FileView.vue";
 import FileMessage, { Model } from "@/views/Component/FileMessage.vue";
-import API from "@/api/image/cartoonComic.api";
+import API from "@/api/image/cartoonComic-api";
 
 interface formType {
   input: string;
@@ -137,6 +137,7 @@ const modeOptions = [
   { value: "hayao", label: t("Image.CartoonComic.ModeHayao") },
   { value: "cute", label: t("Image.CartoonComic.ModeCute") },
   { value: "jpface", label: t("Image.CartoonComic.ModeJPFace") },
+  { value: "ghibli", label: t("Image.CartoonComic.ModeGhibli") },
   { value: "shinkai", label: t("Image.CartoonComic.ModeShinkai") },
   { value: "sketch", label: t("Image.CartoonComic.ModeSketch") },
 ];
