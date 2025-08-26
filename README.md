@@ -64,17 +64,17 @@ We will continue to integrate and optimize more AI models to meet the diverse ne
 
 ### Running interface
 Home
-![Home](.assets/en-US/dashboard.png)
+![Home](.assets/en-US/dashboard.jpg)
 Generate Chat
-![Generate Chat](.assets/en-US/gen_chat.png)
+![Generate Chat](.assets/en-US/gen_chat.jpg)
 Image processing
-![Image processing](.assets/en-US/image_auto_wipe.png)
+![Image processing](.assets/en-US/image_auto_wipe.jpg)
 Video processing
-![Video processing](.assets/en-US/video_cartoon_comic.png)
+![Video processing](.assets/en-US/video_cartoon_comic.jpg)
 Audio processing
-![Audio processing](.assets/en-US/audio_vocal_split.png)
+![Audio processing](.assets/en-US/audio_vocal_split.jpg)
 Settings
-![Settings](.assets/en-US/settings.png)
+![Settings](.assets/en-US/settings.jpg)
 
 ### Donation support
 If you find this project useful, you can buy the author a cup of coffee.

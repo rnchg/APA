@@ -64,17 +64,17 @@
 
 ### 运行界面
 主页
-![主页](.assets/zh-CN/dashboard.png)
+![主页](.assets/zh-CN/dashboard.jpg)
 生成对话
-![生成对话](.assets/zh-CN/gen_chat.png)
+![生成对话](.assets/zh-CN/gen_chat.jpg)
 图片处理
-![图片处理](.assets/zh-CN/image_auto_wipe.png)
+![图片处理](.assets/zh-CN/image_auto_wipe.jpg)
 视频处理
-![视频处理](.assets/zh-CN/video_cartoon_comic.png)
+![视频处理](.assets/zh-CN/video_cartoon_comic.jpg)
 音频处理
-![音频处理](.assets/zh-CN/audio_vocal_split.png)
+![音频处理](.assets/zh-CN/audio_vocal_split.jpg)
 设置
-![设置](.assets/zh-CN/settings.png)
+![设置](.assets/zh-CN/settings.jpg)
 
 ### 捐赠支持
 如果您觉得这个项目有用，可以请作者喝一杯咖啡。
